@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sediments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Composition</th>
+      <th>Weight</th>
+      <th>Local</th>
+      <th>Data created</th>
+      <th>Data registered</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sediments.each do |sediment| %>
+      <tr>
+        <td><%= sediment.composition %></td>
+        <td><%= sediment.weight %></td>
+        <td><%= sediment.local %></td>
+        <td><%= sediment.data_created %></td>
+        <td><%= sediment.data_registered %></td>
+        <td><%= link_to 'Show', sediment %></td>
+        <td><%= link_to 'Edit', edit_sediment_path(sediment) %></td>
+        <td><%= link_to 'Destroy', sediment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sediment', new_sediment_path %>

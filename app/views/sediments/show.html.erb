@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Composition:</strong>
+  <%= @sediment.composition %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @sediment.weight %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @sediment.local %>
+</p>
+
+<p>
+  <strong>Data created:</strong>
+  <%= @sediment.data_created %>
+</p>
+
+<p>
+  <strong>Data registered:</strong>
+  <%= @sediment.data_registered %>
+</p>
+
+<%= link_to 'Edit', edit_sediment_path(@sediment) %> |
+<%= link_to 'Back', sediments_path %>

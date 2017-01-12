@@ -1,0 +1,1 @@
+json.partial! "sediments/sediment", sediment: @sediment

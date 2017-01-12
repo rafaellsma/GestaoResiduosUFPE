@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112175843) do
+ActiveRecord::Schema.define(version: 20170112181609) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20170112175843) do
     t.index ["user_id"], name: "index_laboratories_on_user_id"
   end
 
+  create_table "sediments", force: :cascade do |t|
+    t.string   "composition"
+    t.decimal  "weight"
+    t.string   "local"
+    t.date     "data_created"
+    t.date     "data_registered"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "laboratory_id"
+    t.index ["laboratory_id"], name: "index_sediments_on_laboratory_id"
+    t.index ["user_id"], name: "index_sediments_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -50,7 +64,12 @@ ActiveRecord::Schema.define(version: 20170112175843) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.integer  "phone_ext"
+    t.boolean  "admin"
+    t.integer  "laboratory_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["laboratory_id"], name: "index_users_on_laboratory_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
