@@ -1,24 +1,13 @@
-# README
+#README - Gestão de Resíduos Químicos
+Versão do Ruby: 2.3.1 |=|
+Versão de Rails: 5.0.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto de Gerenciamento de Resíduos Químicos gerados na Universidade Federal de Pernambuco - Campus Recife 
 
-Things you may want to cover:
+Equipe:
 
-* Ruby version
+    Bruno Filho (brgccf@cin.ufpe.br)
+    Rafael Albuquerque (rlsma@cin.ufpe.br)
+    Pedro Rossi (pgrr@cin.ufpe.br)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Centro de Informática - CIn UFPE @Copyright 2017
