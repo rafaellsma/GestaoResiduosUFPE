@@ -1,0 +1,42 @@
+<%= form_for(sediment) do |f| %>
+  <% if sediment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sediment.errors.count, "error") %> prohibited this sediment from being saved:</h2>
+
+      <ul>
+      <% sediment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :composition %>
+    <%= f.text_field :composition %>
+  </div>
+
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :local %>
+    <%= f.text_field :local %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data_created %>
+    <%= f.date_select :data_created %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data_registered %>
+    <%= f.date_select :data_registered %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

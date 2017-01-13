@@ -1,0 +1,1 @@
+json.array! @sediments, partial: 'sediments/sediment', as: :sediment
