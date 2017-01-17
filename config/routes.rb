@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :sediments
   devise_for :users
-  get 'home/index'
-
+  
   resources :laboratories
   resources :departments
   resources :centers

@@ -9,6 +9,9 @@
   </head>
 
   <body>
+  <p><%= alert %></p>
+  <p><%= notice %></p>
+  <%= link_to 'Sair', destroy_user_session_path, method: :DELETE %>
     <%= yield %>
   </body>
 </html>
