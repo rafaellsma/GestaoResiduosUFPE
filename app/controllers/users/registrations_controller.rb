@@ -10,7 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @centers = Center.all
     @departments = Department.where("center_id = ?", @centers.first)
     @laboratories = Laboratory.where("department_id = ?", @departments.first)
-    super
+    super do
+      resource.laboratory = Laboratory.find(resource.laboratory_id)
+    end
   end
 
   def update_departments

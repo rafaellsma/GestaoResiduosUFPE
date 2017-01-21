@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117223353) do
+ActiveRecord::Schema.define(version: 20170121200946) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20170117223353) do
     t.integer  "department_id"
     t.index ["department_id"], name: "index_laboratories_on_department_id"
     t.index ["user_id"], name: "index_laboratories_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "sediments", force: :cascade do |t|
@@ -68,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170117223353) do
     t.datetime "updated_at",                             null: false
     t.string   "name"
     t.integer  "phone_ext"
-    t.boolean  "admin"
+    t.boolean  "admin",                  default: false
     t.integer  "laboratory_id"
     t.boolean  "approved",               default: false
     t.index ["email"], name: "index_users_on_email", unique: true
