@@ -25,6 +25,9 @@ class SedimentsController < ApplicationController
   # POST /sediments.json
   def create
     @sediment = Sediment.new(sediment_params)
+    @sediment.data_registered = Time.now
+    @sediment.laboratory = current_user.laboratory
+    @sediment.user = current_user
 
     respond_to do |format|
       if @sediment.save

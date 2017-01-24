@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :sediments
+  authenticate :user do
+    resources :sediments
+  end
   devise_for :users
   get 'home/index'
 

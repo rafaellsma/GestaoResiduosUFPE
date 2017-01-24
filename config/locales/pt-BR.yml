@@ -1,0 +1,4 @@
+pt-BR:
+  sediments:
+    create:
+      notice: 'O residuo foi cadastrado com sucesso'
