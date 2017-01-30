@@ -1,3 +1,3 @@
 class Center < ApplicationRecord
-  has_many :department
+  has_many :departments
 end

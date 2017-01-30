@@ -4,8 +4,13 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -20,9 +25,20 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <div class="field">
+    <%= f.label :phone_ext %><br />
+    <%= f.number_field :phone_ext %>
+  </div>
+  <div class="field">
+    <%= select_tag "center", options_for_select(@centers.collect { |center|
+    [center.name, center.id] }, 1), id: 'centers_select' %>
+    <%= select_tag "departments", options_for_select(@departments.collect { |department|
+    [department.name, department.id] }, 1), id: 'departments_select' %>
+    <%= f.select :laboratory_id, options_for_select(@laboratories.collect { |laboratory|
+    [laboratory.name, laboratory.id] }, 0), {}, {id: 'laboratories_select'} %>
+  </div>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up"%>
   </div>
 <% end %>
 
