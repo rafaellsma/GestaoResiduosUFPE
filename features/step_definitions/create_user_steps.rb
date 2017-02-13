@@ -22,14 +22,6 @@ When(/^I go to sign up page$/) do
   visit new_user_registration_path
 end
 
-When(/^I fill "([^"]*)" with "([^"]*)"$/) do |field,txt|
-  fill_in "user_"+field, with: txt
-end
-
-When(/^I fill "([^"]*)" with ([0-9]+)$/) do |field,num|
-  fill_in "user_"+field, with: num
-end
-
 When(/^I select option "([^"]*)" in "([^"]*)"$/) do |option, sel|
   find("##{sel}_select").find("option[#{option}]").click
 end

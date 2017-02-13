@@ -11,11 +11,12 @@ Then(/^I see a message "([^"]*)"$/) do |msg|
 end
 
 Given(/^I'm logged in as user$/) do
-  user = User.create(name: 'test', email:'test@test.com', password:'123456')
-  lab = Laboratory.create(name: 'lab 1')
+  user = User.create(name: 'test', email:'test@test.com', password:'123456', phone_ext:'123', approved: true)
+  center = Center.create(name: 'cin')
+  center.departments << Department.create(name: 'cin')
+  center.departments.first.laboratories << Laboratory.create(name: 'lab 1')
+  lab = center.departments.first.laboratories.first
   user.laboratory = lab
-  user.save
-  
   visit new_user_session_path
   fill_in "user_email", with: 'test@test.com'
   fill_in "user_password", with: '123456'
