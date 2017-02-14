@@ -1,7 +1,7 @@
 <%= form_for(sediment) do |f| %>
   <% if sediment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sediment.errors.count, "error") %> prohibited this sediment from being saved:</h2>
+      <h2><%= sediment.errors.count.to_s + ((sediment.errors.count == 1)? " erro" : " errors")%> </h2>
 
       <ul>
       <% sediment.errors.full_messages.each do |message| %>
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :data_created %>
-    <%= f.date_select :data_created %>
+    <%= f.date_select :data_created, prompt: { day: 'Select o dia', month: 'Select o mês', year: 'Selecione o ano' } %>
   </div>
 
   <div class="actions">

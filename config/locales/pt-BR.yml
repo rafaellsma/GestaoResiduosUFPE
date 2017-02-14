@@ -4,9 +4,13 @@ pt-BR:
       password_confirmation: 'Confirme sua senha'
       password: 'Senha'
       phone_ext: 'Ramal'
+      weight: 'Peso'
+      composition: 'Composição'
+      data_created: 'Data de criação'
   activerecord:
     models:
       user: Usuario
+      sediment: Residuo
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

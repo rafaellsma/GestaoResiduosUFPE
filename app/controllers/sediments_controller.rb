@@ -31,7 +31,7 @@ class SedimentsController < ApplicationController
 
     respond_to do |format|
       if @sediment.save
-        format.html { redirect_to @sediment, notice: 'Sediment was successfully created.' }
+        format.html { redirect_to @sediment, notice: 'Residuo foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @sediment }
       else
         format.html { render :new }

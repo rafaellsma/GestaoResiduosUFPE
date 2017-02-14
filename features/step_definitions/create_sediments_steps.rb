@@ -32,11 +32,12 @@ When(/^I fill "([^"]*)" with (\d+)$/) do |field, num|
 end
 
 When(/^I select "([^"]*)" with "([^"]*)" option$/) do |field, option|
-  find("#"+field).find("option[#{option}]").click
+  find("##{field}").find(:xpath, "option[#{option}]").select_option
 end
 
 When(/^I click "([^"]*)"$/) do |msg|
   click_button msg
+  p Sediment.all
 end
 
 Then(/^I can see message "([^"]*)"$/) do |msg|
