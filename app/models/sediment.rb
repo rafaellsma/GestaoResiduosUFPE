@@ -4,5 +4,5 @@ class Sediment < ApplicationRecord
 
   validates :weight, presence: true
   validates :composition, presence: true
-  validates :local, presence: true
+  validates :type, presence: true
 end
