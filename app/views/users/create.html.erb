@@ -1,0 +1,22 @@
+<h1>Novo Usuário</h1>
+<%= form_for :user do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus:true %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, autofocus:true %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password, autofocus:true %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_ext %>
+    <%= f.text_field :phone_ext, autofocus:true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
