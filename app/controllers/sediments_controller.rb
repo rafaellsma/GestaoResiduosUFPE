@@ -25,10 +25,13 @@ class SedimentsController < ApplicationController
   # POST /sediments.json
   def create
     @sediment = Sediment.new(sediment_params)
-
+    @sediment.data_registered = Time.now
+    @sediment.laboratory = current_user.laboratory
+    @sediment.user = current_user
+    @sediment.local = current_user.laboratory
     respond_to do |format|
       if @sediment.save
-        format.html { redirect_to @sediment, notice: 'Sediment was successfully created.' }
+        format.html { redirect_to @sediment, notice: 'Residuo foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @sediment }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class SedimentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sediment_params
-      params.require(:sediment).permit(:composition, :weight, :local, :data_created, :data_registered)
+      params.require(:sediment).permit(:composition, :weight, :local, :data_created,:res_type ,:data_registered)
     end
 end
