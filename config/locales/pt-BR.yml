@@ -6,6 +6,7 @@ pt-BR:
       phone_ext: 'Ramal'
       weight: 'Peso'
       composition: 'Composição'
+      res_type: 'Tipo'
       data_created: 'Data de criação'
   activerecord:
     models:
