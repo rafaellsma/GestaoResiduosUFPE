@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  has_one :laboratory
+  belongs_to :laboratory, optional: true
   has_many :sediments
   has_many :notifications
 
   #validation
   validates :name, presence: true
   validates :phone_ext, presence: true
-  validates :laboratory_id, presence: true, unless: [:admin?]
+  validates :laboratory, presence: true, unless: [:admin?]
 
   #callbacks
   after_create :send_notification_admin
@@ -36,5 +36,15 @@ class User < ApplicationRecord
     else
       super
     end
+  end
+
+  def approve!
+    self.approved = true
+    self.save
+  end
+
+  def disapprove!
+    self.approved = false
+    self.save
   end
 end

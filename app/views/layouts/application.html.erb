@@ -12,7 +12,7 @@
   <p><%= alert %></p>
   <p><%= notice %></p>
   <% if current_user %>
-    <%= link_to 'Sair', destroy_user_session_path, method: :DELETE %>
+    <%= link_to 'Sair', destroy_user_session_path%>
   <% end %>
     <%= yield %>
   </body>
