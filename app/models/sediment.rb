@@ -1,4 +1,4 @@
 class Sediment < ApplicationRecord
-  belongs_to :user
-  belongs_to :laboratory
+  belongs_to :user, optional: true
+  belongs_to :laboratory, optional: true
 end

@@ -1,0 +1,17 @@
+<h1>Generate Report</h1>
+
+
+
+<%= form_tag(report_path) do %>
+  <%= date_field_tag :initial_date%>
+  <%= date_field_tag :final_date%>
+  <%= submit_tag 'Generate' %>
+<% end %>
+
+<% if !(@sediments.empty?) %>
+	<h3>Total sediments: <span id="seg_lenght"><%= @sediments.length %></span></h3>
+
+	<% @sediments.each do |seg| %>
+		<p><%= seg.composition %></p>
+	<% end %>
+<% end %>
