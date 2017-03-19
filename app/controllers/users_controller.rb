@@ -3,7 +3,9 @@ class UsersController < ApplicationController
     @users = []
     @users = User.where(approved: true, admin: false) if params[:type] == '1'
     @users = User.where(approved: false, admin: false) if params[:type] == '0'
+    flash[:notice] = ''
     if !params[:type].blank? && @users.empty?
+        p 'entrou'
        flash[:notice] = "Não existe nenhum usuário"
     end
   end
