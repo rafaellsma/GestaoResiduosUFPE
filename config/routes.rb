@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   resources :centers
   root to: "home#index"
 
+  authenticated :user, lambda { |u| u.admin? } do
+    get 'list', to: 'users#index'
+    post 'approve', to: 'users#approve'
+  end
+
   devise_scope :user do
+
     get 'users/update_departments', to: 'users/registrations#update_departments'
     get 'users/update_laboratories', to: 'users/registrations#update_laboratories'
   end
