@@ -18,12 +18,11 @@
 
   <div class="field">
     <%= f.label :res_type %>
-    <%= f.select :res_type, options_for_select(["Selecione um Tipo",
-                                               "Sólido Orgânico",
+    <%= f.select :res_type, options_for_select(["Sólido Orgânico",
                                                "Sólido Inorgânico", "Líquido Inorgânico",
                                                "Líquido Inflamável", "Líquido Orgânico",
-                                               "Outros (risco ao meio ambiente)"],
-    selected=1) %>
+                                               "Outros (risco ao meio ambiente)"]
+    ), prompt: 'Selecione um Tipo' %>
   </div>
 
   <div class="field">
