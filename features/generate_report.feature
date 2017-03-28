@@ -8,5 +8,4 @@ Feature: Generate Report
 		When I go to the Report's Page
 		And I fill the initial date with "11/10/2016"
 		And I fill the final date with "20/12/2016"
-		When I click the "Generate" button
-		Then I got an report with 10 sediments
+		Then I generate a report by clicking in "Generate"

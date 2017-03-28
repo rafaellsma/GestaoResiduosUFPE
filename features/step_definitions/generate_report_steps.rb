@@ -31,10 +31,6 @@ When(/^I fill the final date with "([^"]*)"$/) do |final_date|
   fill_in "final_date", with: conv_date
 end
 
-When(/^I click the "([^"]*)" button$/) do |btn|
+Then(/^I generate a report by clicking in "([^"]*)"$/) do |btn|
   click_button btn
-end
-
-Then(/^I got an report with (\d+) sediments$/) do |amount|
-  expect(page).to have_css("#seg_lenght", text: amount)
 end

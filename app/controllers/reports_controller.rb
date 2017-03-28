@@ -10,11 +10,10 @@ class ReportsController < ApplicationController
 	end
 
 	def create
-		conv_date = "15/12/2016".to_date
 		@sediments = Sediment.where("data_created >= ? AND data_created <= ?", params[:initial_date], params[:final_date])
 		send_data generate_pdf(@sediments),
-              filename: "sediments.pdf",
-              type: "application/pdf"
+          filename: "sediments.pdf",
+          type: "application/pdf"
 	end
 
 	def generate_pdf(sediments)
