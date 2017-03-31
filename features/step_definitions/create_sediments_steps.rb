@@ -35,6 +35,10 @@ When(/^I select "([^"]*)" with "([^"]*)" option$/) do |field, option|
   find("##{field}").find(:xpath, "option[#{option}]").select_option
 end
 
+When(/^I select "([^"]*)" with (\d+) option$/) do |field, option|
+  find("##{field}").find(:xpath, "option[#{option}]").select_option
+end
+
 When(/^I click "([^"]*)"$/) do |msg|
   click_button msg
   p Sediment.all
