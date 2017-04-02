@@ -11,7 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @departments = Department.where("center_id = ?", @centers.first)
     @laboratories = Laboratory.where("department_id = ?", @departments.first)
     super do
-      resource.laboratory = Laboratory.find(resource.laboratory_id)
+      lab = Laboratory.find(resource.laboratory_id)
+      resource.laboratory = lab
     end
   end
 

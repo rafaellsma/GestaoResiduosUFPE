@@ -17,23 +17,22 @@
   </div>
 
   <div class="field">
+    <%= f.label :res_type %>
+    <%= f.select :res_type, options_for_select(["Sólido Orgânico",
+                                               "Sólido Inorgânico", "Líquido Inorgânico",
+                                               "Líquido Inflamável", "Líquido Orgânico",
+                                               "Outros (risco ao meio ambiente)"]
+    ), prompt: 'Selecione um Tipo' %>
+  </div>
+
+  <div class="field">
     <%= f.label :weight %>
     <%= f.text_field :weight %>
   </div>
 
   <div class="field">
-    <%= f.label :local %>
-    <%= f.text_field :local %>
-  </div>
-
-  <div class="field">
-    <%= f.label :data_created %>
-    <%= f.date_select :data_created %>
-  </div>
-
-  <div class="field">
-    <%= f.label :data_registered %>
-    <%= f.date_select :data_registered %>
+    <%= f.label :volume %>
+    <%= f.text_field :volume %>
   </div>
 
   <div class="actions">

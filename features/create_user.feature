@@ -8,11 +8,11 @@ Feature: Create users
     And The Department "dep" at center "Cin" exists
     And The laboratory "lab 1" at department "dep" exists
     When I go to sign up page
-    And I fill "name" with "Rafael"
-    And I fill "email" with "test@test.com"
-    And I fill "password" with "test123"
-    And I fill "password_confirmation" with "test123"
-    And I fill "phone_ext" with 23
+    And I fill "user_name" with "Rafael"
+    And I fill "user_email" with "test@test.com"
+    And I fill "user_password" with "test123"
+    And I fill "user_password_confirmation" with "test123"
+    And I fill "user_phone_ext" with 23
     And I select option "1" in "centers"
     And I select option "1" in "departments"
     And I select option "1" in "laboratories"

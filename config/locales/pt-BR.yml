@@ -1,12 +1,21 @@
 pt-BR:
+  new_sediment: 'Novo Resíduo'
   attributes:
       name: 'Nome'
       password_confirmation: 'Confirme sua senha'
       password: 'Senha'
       phone_ext: 'Ramal'
+      weight: 'Peso'
+      composition: 'Composição'
+      res_type: 'Tipo'
+      data_created: 'Data de criação'
   activerecord:
     models:
       user: Usuario
+      sediment: Residuo
+      center: Centro
+      laboratory: Laboratório
+      department: Departamento
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

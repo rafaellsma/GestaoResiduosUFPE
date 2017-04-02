@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170317162336) do
     t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.integer  "laboratory_id"
+    t.decimal  "volume"
+    t.string   "res_type"
     t.index ["laboratory_id"], name: "index_sediments_on_laboratory_id"
     t.index ["user_id"], name: "index_sediments_on_user_id"
   end
