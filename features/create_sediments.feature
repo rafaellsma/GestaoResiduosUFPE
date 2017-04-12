@@ -29,4 +29,3 @@ Feature: Create sediments on system
       Then I can see message "Peso não pode ficar em branco"
       Then I can see message "Tipo não pode ficar em branco"
       Then I can see message "Composição não pode ficar em branco"
-
