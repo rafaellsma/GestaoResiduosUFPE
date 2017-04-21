@@ -3,33 +3,34 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, class:"form-control", placeholder:"Nome" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"Email" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :password %>
+
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Senha" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(No mínimo <%= @minimum_password_length %> caracteres)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Confirme a senha" %>
   </div>
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :phone_ext %><br />
-    <%= f.number_field :phone_ext %>
+    <%= f.number_field :phone_ext, class:"form-control", placeholder:"Ramal" %>
   </div>
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= select_tag "center", options_for_select(@centers.collect { |center|
     [center.name, center.id] }, 1), id: 'centers_select' %>
     <%= select_tag "departments", options_for_select(@departments.collect { |department|
@@ -37,8 +38,8 @@
     <%= f.select :laboratory_id, options_for_select(@laboratories.collect { |laboratory|
     [laboratory.name, laboratory.id] }, 0), {}, {id: 'laboratories_select'} %>
   </div>
-  <div class="actions">
-    <%= f.submit "Sign up"%>
+  <div class="btn-default btn-lg">
+    <%= f.submit "Solicitar"%>
   </div>
 <% end %>
 
