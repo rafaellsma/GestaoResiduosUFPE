@@ -14,9 +14,9 @@
     <% @centers.each do |center| %>
       <tr>
         <td><%= center.name %></td>
-        <td><%= link_to 'Show', center %></td>
-        <td><%= link_to 'Edit', edit_center_path(center) %></td>
-        <td><%= link_to 'Destroy', center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', center, :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Edit', edit_center_path(center), :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Destroy', center, :class => "btn btn-default btn-lg", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Center', new_center_path %>
+<%= link_to 'New Center', new_center_path, :class => "btn btn-default btn-lg" %>
