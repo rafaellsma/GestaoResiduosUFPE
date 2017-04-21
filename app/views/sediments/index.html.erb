@@ -24,9 +24,9 @@
         <td><%= sediment.local %></td>
         <td><%= sediment.data_created %></td>
         <td><%= sediment.data_registered %></td>
-        <td><%= link_to 'Show', sediment %></td>
-        <td><%= link_to 'Edit', edit_sediment_path(sediment) %></td>
-        <td><%= link_to 'Destroy', sediment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', sediment, :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Edit', edit_sediment_path(sediment), :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Destroy', sediment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-lg" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Sediment', new_sediment_path %>
+<%= link_to 'New Sediment', new_sediment_path , :class => "btn btn-default btn-lg"%>

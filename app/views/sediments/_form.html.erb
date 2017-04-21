@@ -11,32 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :composition %>
-    <%= f.text_field :composition %>
+    <%= f.text_field(:composition, class:"form-control", placeholder:"Composition") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :res_type %>
-    <%= f.text_field :res_type %>
+    <%= f.text_field(:res_type, class:"form-control", placeholder:"Tipo") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :weight %>
-    <%= f.text_field :weight %>
+    <%= f.text_field(:weight, class:"form-control", placeholder:"Weight") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :volume %>
-    <%= f.text_field :volume %>
+    <%= f.text_field(:volume, class:"form-control", placeholder:"Volume") %>
   </div>
 
-  <div class="field">
-    <%= f.label :data_registered %>
-    <%= f.date_select :data_registered %>
-  </div>
-
-  <div class="actions">
+  <div class="btn-default btn-lg">
     <%= f.submit %>
   </div>
 <% end %>

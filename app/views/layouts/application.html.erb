@@ -28,7 +28,7 @@
   <p><%= alert %></p>
   <p><%= notice %></p>
   <% if current_user %>
-    <%= link_to 'Sair', destroy_user_session_path%>
+    <%= link_to 'Sair', destroy_user_session_path, :class => "btn btn-warning btn-lg"%>
   <% end %>
 
     <%= yield %>
