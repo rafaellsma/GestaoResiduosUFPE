@@ -16,9 +16,9 @@
       <tr>
         <td><%= laboratory.name %></td>
         <td><%= laboratory.user %></td>
-        <td><%= link_to 'Show', laboratory %></td>
-        <td><%= link_to 'Edit', edit_laboratory_path(laboratory) %></td>
-        <td><%= link_to 'Destroy', laboratory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', laboratory , :class => "btn btn-default btn-lg"%></td>
+        <td><%= link_to 'Edit', edit_laboratory_path(laboratory), :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Destroy', laboratory, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-lg" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Laboratory', new_laboratory_path %>
+<%= link_to 'New Laboratory', new_laboratory_path, :class => "btn btn-default btn-lg" %>

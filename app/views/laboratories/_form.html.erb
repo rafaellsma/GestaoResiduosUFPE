@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field(:name, class:"form-control", placeholder:"Name") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.text_field(:user_id, class:"form-control", placeholder:"User") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :department_id %>
-    <%= f.text_field :department_id %>
+    <%= f.text_field(:department_id, class:"form-control", placeholder:"Department") %>
   </div>
 
-  <div class="actions">
+  <div class="btn-default btn-lg">
     <%= f.submit %>
   </div>
 <% end %>
