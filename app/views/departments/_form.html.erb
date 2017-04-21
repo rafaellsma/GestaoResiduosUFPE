@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field(:name, class:"form-control", placeholder:"Name") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :center_id %>
-    <%= f.text_field :center_id %>
+    <%= f.text_field(:center_id, class:"form-control", placeholder:"Center")  %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :chief %>
-    <%= f.text_field :chief %>
+    <%= f.text_field(:chief, class:"form-control", placeholder:"Chief") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field(:email, class:"form-control", placeholder:"Email") %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
     <%= f.label :phone_ext %>
-    <%= f.text_field :phone_ext %>
+    <%= f.text_field(:phone_ext, class:"form-control", placeholder:"Ramal") %>
   </div>
 
-  <div class="actions">
+  <div class="btn-default btn-lg">
     <%= f.submit %>
   </div>
 <% end %>

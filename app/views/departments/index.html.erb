@@ -22,9 +22,9 @@
         <td><%= department.chief %></td>
         <td><%= department.email %></td>
         <td><%= department.phone_ext %></td>
-        <td><%= link_to 'Show', department %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', department, :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Edit', edit_department_path(department), :class => "btn btn-default btn-lg" %></td>
+        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-lg" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Department', new_department_path %>
+<%= link_to 'New Department', new_department_path, :class => "btn btn-default btn-lg" %>
