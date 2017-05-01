@@ -2,7 +2,7 @@
 
 <h1>Sediments</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Composition</th>
@@ -15,7 +15,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="table-bordered">
     <% @sediments.each do |sediment| %>
       <tr>
         <td><%= sediment.composition %></td>
