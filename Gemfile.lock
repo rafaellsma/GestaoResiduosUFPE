@@ -94,6 +94,9 @@ GEM
     gherkin (4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    glyphicons-rails (0.1.2)
+      sass (~> 3.3)
+      sass-rails
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -230,6 +233,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  glyphicons-rails (~> 0.1.2)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -247,4 +251,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
