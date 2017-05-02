@@ -2,7 +2,7 @@
 
 <h1>Sediments</h1>
 
-<table class="table">
+<table class="table table-responsive table-bordered table-hover">
   <thead>
     <tr>
       <th class="label-info">Composition</th>
@@ -17,15 +17,15 @@
   <tbody class="table-bordered">
     <% @sediments.each do |sediment| %>
       <tr>
-        <td><%= sediment.composition %></td>
-        <td><%= sediment.weight %></td>
-        <td><%= sediment.res_type %></td>
-        <td><%= sediment.local %></td>
-        <td><%= sediment.data_created %></td>
-        <td><%= sediment.data_registered %></td>
-        <td><%= link_to 'Show', sediment, :class => "btn btn-default btn-lg" %></td>
-        <td><%= link_to 'Edit', edit_sediment_path(sediment), :class => "btn btn-default btn-lg" %></td>
-        <td><%= link_to 'Destroy', sediment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-lg" %></td>
+        <td class="text-capitalize h4"><%= sediment.composition %></td>
+        <td class="text-capitalize h4"><%= sediment.weight %></td>
+        <td class="text-capitalize h4"><%= sediment.res_type %></td>
+        <td class="text-capitalize h4"><%= sediment.laboratory.name %></td>
+        <td class="text-capitalize h4"><%= sediment.data_created %></td>
+        <td class="text-capitalize h4"><%= sediment.data_registered %></td>
+        <td><%= link_to 'Show', sediment, :class => "btn btn-default btn" %></td>
+        <td><%= link_to 'Edit', edit_sediment_path(sediment), :class => "btn btn-default btn" %></td>
+        <td><%= link_to 'Destroy', sediment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn" %></td>
       </tr>
     <% end %>
   </tbody>
