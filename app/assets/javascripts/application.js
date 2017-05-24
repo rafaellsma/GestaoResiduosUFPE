@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 $(document).on('change', '#centers_select', function(evt) {
   $.ajax('update_departments', {
     type: 'GET',
@@ -29,6 +31,7 @@ $(document).on('change', '#centers_select', function(evt) {
     }
   });
 });
+
 $(document).on('change', '#departments_select', function(evt) {
   $.ajax('update_laboratories', {
     type: 'GET',

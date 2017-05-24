@@ -21,7 +21,7 @@ Given(/^I am logged as admin$/) do
   visit '/users/sign_in'
   fill_in "user_email", with: admin.email
   fill_in "user_password", with: 'admin123'
-  click_button "Log in"
+  click_button "Entrar"
 end
 
 When(/^I am on users list page$/) do

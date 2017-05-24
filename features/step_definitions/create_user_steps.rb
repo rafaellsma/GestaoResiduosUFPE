@@ -27,7 +27,7 @@ When(/^I select option "([^"]*)" in "([^"]*)"$/) do |option, sel|
 end
 
 When(/^I submit form$/) do
-  click_button 'Sign up'
+  click_button 'Cadastrar'
 end
 
 Then(/^User with email "([^"]*)", name "([^"]*)", phone_ext ([0-9]+), password "([^"]*)" and laboratory "([^"]*)" was created$/) do |email, name, phone_ext, password, laboratory|
