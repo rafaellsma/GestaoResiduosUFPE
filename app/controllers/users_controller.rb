@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   def index
     @users = []
-    @users = User.where(approved: true, admin: false) if params[:type] == '1'
-    @users = User.where(approved: false, admin: false) if params[:type] == '0'
+    if params[:type] == '1'
+      @users = User.where(approved: true, admin: false)
+    else
+      @users = User.where(approved: false, admin: false)
+    end
     flash[:notice] = ''
     if !params[:type].blank? && @users.empty?
        flash[:notice] = "Não existe nenhum usuário"

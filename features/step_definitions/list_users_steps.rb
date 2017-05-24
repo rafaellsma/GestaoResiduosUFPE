@@ -4,7 +4,7 @@ Given(/^Exists ([0-9]+) unapproved users$/) do |qtd|
   lab = dep.laboratories.create(name: 'lab1')
 
   qtd.to_i.times do |i|
-    user = User.create(
+    User.create(
       name: 'user'+i.to_s,
       email: "user#{i.to_s}@email.com",
       password: "user123",
@@ -29,7 +29,7 @@ When(/^I am on users list page$/) do
 end
 
 When(/^I click in unapproved users list$/) do
-  click_link 'usuarios nao aprovados'
+  click_link 'Usuarios não aprovados'
 end
 
 Then(/^I see (\d+) users$/) do |qtd|
@@ -55,7 +55,7 @@ Given(/^Exists (\d+) approved users$/) do |qtd|
 end
 
 When(/^I click in approved users list$/) do
-  click_link 'usuarios aprovados'
+  click_link 'Usuarios aprovados'
 end
 
 Then(/^I see "([^"]*)"$/) do |msg|
