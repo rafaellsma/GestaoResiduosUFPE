@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   authenticated :user, lambda { |u| u.admin? } do
-    get 'reg-admin', to: 'users#new_admin'
-    post 'reg-admin', to: 'users#create'
+    get 'register_admin', to: 'users#new_admin'
+    post 'register_admin', to: 'users#create'
   end
 
   devise_scope :user do
