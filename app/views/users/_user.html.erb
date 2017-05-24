@@ -7,9 +7,9 @@
       <%= form_tag('/approve') do %>
         <%= hidden_field_tag 'user_id', user.id %>
         <% if user.approved %>
-          <%= submit_tag 'desaprove!', class: 'btn btn-info btn-xs' %>
+          <%= submit_tag 'desaprove!', class: 'btn btn-xs btn-desapprove' %>
         <% else %>
-          <%= submit_tag 'aprove!', class: 'btn btn-info btn-xs' %>
+          <%= submit_tag 'aprove!', class: 'btn btn-xs btn-approve ' %>
         <% end %>
       <% end %>
     </td>
