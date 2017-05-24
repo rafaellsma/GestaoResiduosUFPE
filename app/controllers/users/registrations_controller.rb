@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout "devise", only: [:new, :create]
   def new
     @centers = Center.all
     @departments = Department.where("center_id = ?", @centers.first)

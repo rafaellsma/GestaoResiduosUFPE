@@ -19,7 +19,7 @@ Given(/^I'm logged in as user$/) do
   visit new_user_session_path
   fill_in "user_email", with: 'test@test.com'
   fill_in "user_password", with: '123456'
-  click_button "Log in"
+  click_button "Entrar"
 end
 
 When(/^I fill "([^"]*)" with "([^"]*)"$/) do |field, txt|
