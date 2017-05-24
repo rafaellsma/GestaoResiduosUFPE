@@ -4,8 +4,8 @@ a {
   }
 }
 
-body {
-  padding-top: 90px;
+.brand {
+  width: 400px;
 }
 
 .panel-login {
@@ -64,7 +64,7 @@ body {
 }
 
 .btn-login {
-  background-color: #59B2E0;
+  background-color: #b22d47;
   outline: none;
   color: #fff;
   font-size: 14px;
@@ -72,11 +72,11 @@ body {
   font-weight: normal;
   padding: 14px 0;
   text-transform: uppercase;
-  border-color: #59B2E6;
+  border-color: #b22d41;
   &:hover, &:focus {
     color: #fff;
-    background-color: #53A3CD;
-    border-color: #53A3CD;
+    background-color: #9e283a;
+    border-color: #9e283a;
   }
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .btn-register {
-  background-color: #1CB94E;
+  background-color: #86c254;
   outline: none;
   color: #fff;
   font-size: 14px;
@@ -98,10 +98,10 @@ body {
   font-weight: normal;
   padding: 14px 0;
   text-transform: uppercase;
-  border-color: #1CB94A;
+  border-color: #79af4c;
   &:hover, &:focus {
     color: #fff;
-    background-color: #1CA347;
-    border-color: #1CA347;
+    background-color: #79af4c;
+    border-color: #79af4c;
   }
 }
