@@ -71,3 +71,16 @@ end
 When(/^I go to register admin page$/) do
   visit register_admin_path
 end
+
+And(/^I go to login page$/) do
+  visit new_user_session_path
+end
+
+
+And(/^I make login$/) do
+  click_button 'Log in'
+end
+
+And(/^I submit new admin user form$/) do
+  click_button 'Criar Usuario'
+end
