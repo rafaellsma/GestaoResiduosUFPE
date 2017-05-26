@@ -8,6 +8,6 @@ Equipe:
 
     Bruno Filho (brgccf@cin.ufpe.br)
     Rafael Albuquerque (rlsma@cin.ufpe.br)
-    Pedro Rossi (pgrr@cin.ufpe.br)
+    Victor Augusto (vapp@cin.ufpe.br)
 
 Centro de Informática - CIn UFPE @Copyright 2017
