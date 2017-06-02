@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   authenticated :user, lambda { |u| u.admin? } do
+    get 'register_admin', to: 'users#new_admin'
+    post 'register_admin', to: 'users#create'
     get 'list', to: 'users#index'
     post 'approve', to: 'users#approve'
   end

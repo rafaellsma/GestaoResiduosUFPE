@@ -66,3 +66,21 @@ end
 Then(/^System has (\d+) user created$/) do |qtd|
     expect(User.all.count).to  eq(qtd.to_i)
 end
+
+
+When(/^I go to register admin page$/) do
+  visit register_admin_path
+end
+
+And(/^I go to login page$/) do
+  visit new_user_session_path
+end
+
+
+And(/^I make login$/) do
+  click_button 'Entrar'
+end
+
+And(/^I submit new admin user form$/) do
+  click_button 'Criar Usuario'
+end
