@@ -71,6 +71,8 @@ pt-BR:
       new: "Cadastrar novo resíduo"
       index: "Listagem Resíduos"
       edit: "Editar Resíduo"
+    users:
+      new_admin: "Cadastrar novo usuário Administrador"
   content:
     sediments:
       index:
@@ -79,4 +81,7 @@ pt-BR:
         type: "Tipo"
         local: "Localização"
         data: "Data de Registro"
+    users:
+      not_approved: "Usuários não aprovados"
+      approved: "Usuários aprovados"
 
