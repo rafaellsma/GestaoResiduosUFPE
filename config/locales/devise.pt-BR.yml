@@ -66,3 +66,17 @@ pt-BR:
       not_saved:
         one: "1 erro impediu a gravação de %{resource} :"
         other: "%{count} erros impediram a gravação de %{resource} :"
+  headers:
+    sediments:
+      new: "Cadastrar novo resíduo"
+      index: "Listagem Resíduos"
+      edit: "Editar Resíduo"
+  content:
+    sediments:
+      index:
+        composition: "Composição"
+        weight: "Peso"
+        type: "Tipo"
+        local: "Localização"
+        data: "Data de Registro"
+
