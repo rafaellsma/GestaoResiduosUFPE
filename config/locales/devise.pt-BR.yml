@@ -73,6 +73,10 @@ pt-BR:
       edit: "Editar Resíduo"
     users:
       new_admin: "Cadastrar novo usuário Administrador"
+    laboratories:
+      new: "Cadastrar novo laboratório"
+      index: "Listagem Laboratórios"
+      edit: "Editar Laboratório"
   content:
     sediments:
       index:
@@ -84,4 +88,8 @@ pt-BR:
     users:
       not_approved: "Usuários não aprovados"
       approved: "Usuários aprovados"
+    laboratories:
+      index:
+        name: "Nome"
+        user: "Facilitador"
 
