@@ -15,7 +15,8 @@
     <% @laboratories.each do |laboratory| %>
       <tr>
         <td><%= laboratory.name %></td>
-        <td><%= laboratory.user %></td>
+        <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
+              <%end%></td>
         <td><%= link_to 'Show', laboratory %></td>
         <td><%= link_to 'Edit', edit_laboratory_path(laboratory) %></td>
         <td><%= link_to 'Destroy', laboratory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
