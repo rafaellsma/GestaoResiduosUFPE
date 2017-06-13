@@ -247,8 +247,10 @@ pt-BR:
         composition: "Composição"
         weight: "Peso"
         type: "Tipo"
-        local: "Localização"
+        local: "Localização (Laboratório)"
         data: "Data de Registro"
+      errors: "Erros ocorreram neste cadastro de resíduo:"
+
     users:
       not_approved: "Usuários não aprovados"
       approved: "Usuários aprovados"
