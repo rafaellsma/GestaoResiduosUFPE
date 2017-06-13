@@ -230,3 +230,30 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  headers:
+    sediments:
+      new: "Cadastrar novo resíduo"
+      index: "Listagem Resíduos"
+      edit: "Editar Resíduo"
+    users:
+      new_admin: "Cadastrar novo usuário Administrador"
+    laboratories:
+      new: "Cadastrar novo laboratório"
+      index: "Listagem Laboratórios"
+      edit: "Editar Laboratório"
+  content:
+    sediments:
+      index:
+        composition: "Composição"
+        weight: "Peso"
+        type: "Tipo"
+        local: "Localização"
+        data: "Data de Registro"
+    users:
+      not_approved: "Usuários não aprovados"
+      approved: "Usuários aprovados"
+    laboratories:
+      index:
+        name: "Nome"
+        user: "Facilitador"
+
