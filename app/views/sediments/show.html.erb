@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Composition:</strong>
+  <strong><%= t('content.sediments.index.composition')%>:</strong>
   <%= @sediment.composition %>
 </p>
 
 <p>
-  <strong>Weight:</strong>
+  <strong><%= t('content.sediments.index.weight')%>:</strong>
   <%= @sediment.weight %>
 </p>
 
@@ -16,13 +16,12 @@
 </p>
 
 <p>
-  <strong>Local:</strong>
-  <%= @sediment.local %>
+  <strong><%= t('content.sediments.index.local')%>:</strong>
+  <%= @sediment.laboratory.name %>
 </p>
 
-
 <p>
-  <strong>Data registered:</strong>
+  <strong><%= t('content.sediments.index.data')%>:</strong>
   <%= @sediment.data_registered %>
 </p>
 

@@ -1,5 +1,4 @@
 pt-BR:
-  new_sediment: 'Novo Resíduo'
   attributes:
       name: 'Nome'
       password_confirmation: 'Confirme sua senha'
@@ -13,9 +12,6 @@ pt-BR:
     models:
       user: Usuario
       sediment: Residuo
-      center: Centro
-      laboratory: Laboratório
-      department: Departamento
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -234,3 +230,32 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  headers:
+    sediments:
+      new: "Cadastrar novo resíduo"
+      index: "Listagem Resíduos"
+      edit: "Editar Resíduo"
+    users:
+      new_admin: "Cadastrar novo usuário Administrador"
+    laboratories:
+      new: "Cadastrar novo laboratório"
+      index: "Listagem Laboratórios"
+      edit: "Editar Laboratório"
+  content:
+    sediments:
+      index:
+        composition: "Composição"
+        weight: "Peso"
+        type: "Tipo"
+        local: "Localização (Laboratório)"
+        data: "Data de Registro"
+      errors: "Erros ocorreram neste cadastro de resíduo:"
+
+    users:
+      not_approved: "Usuários não aprovados"
+      approved: "Usuários aprovados"
+    laboratories:
+      index:
+        name: "Nome"
+        user: "Facilitador"
+

@@ -10,7 +10,7 @@ Feature: Create sediments on system
       When I go to create sediments page
       And I fill "sediment_composition" with "composicao"
       And I fill "sediment_weight" with 234
-      And I select "sediment_res_type" with 2 option
+      And I fill "sediment_res_type" with "toxico"
       And I click "Criar Residuo"
       Then I can see message "Residuo foi criado com sucesso."
 
@@ -18,7 +18,7 @@ Feature: Create sediments on system
       Given I'm logged in as user
       When I go to create sediments page
       And I fill "sediment_composition" with "composicao"
-      And I select "sediment_res_type" with 3 option
+      And I fill "sediment_res_type" with "toxico"
       And I click "Criar Residuo"
       Then I can see message "Peso não pode ficar em branco"
 
@@ -29,4 +29,3 @@ Feature: Create sediments on system
       Then I can see message "Peso não pode ficar em branco"
       Then I can see message "Tipo não pode ficar em branco"
       Then I can see message "Composição não pode ficar em branco"
-
