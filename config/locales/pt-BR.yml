@@ -247,6 +247,7 @@ pt-BR:
         composition: "Composição"
         weight: "Peso"
         type: "Tipo"
+        volume: "Volume"
         local: "Localização (Laboratório)"
         data: "Data de Registro"
       errors: "Erros ocorreram neste cadastro de resíduo:"

@@ -8,6 +8,7 @@
       <th><%= t('content.sediments.index.composition')%></th>
       <th><%= t('content.sediments.index.weight')%></th>
       <th><%= t('content.sediments.index.type')%></th>
+      <th><%= t('content.sediments.index.volume')%></th>
       <th><%= t('content.sediments.index.local')%></th>
       <th><%= t('content.sediments.index.data')%></th>
       <th colspan="3"></th>
@@ -21,7 +22,7 @@
         <td><%= sediment.weight %></td>
         <td><%= sediment.res_type %></td>
         <td><%= sediment.volume %></td>
-        <td><%= sediment.local %></td>
+        <td><%= sediment.laboratory.name%></td>
         <td><%= sediment.data_registered %></td>
         <td><%= link_to 'Show', sediment %></td>
         <td><%= link_to 'Edit', edit_sediment_path(sediment) %></td>
