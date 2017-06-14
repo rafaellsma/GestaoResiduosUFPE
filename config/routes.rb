@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   }
   authenticate :user do
     resources :sediments
+    root to: "home#index"
   end
   resources :laboratories
   resources :departments
   resources :centers
-  root to: "home#index"
+
 
   authenticated :user, lambda { |u| u.admin? } do
     get 'list', to: 'users#index'
