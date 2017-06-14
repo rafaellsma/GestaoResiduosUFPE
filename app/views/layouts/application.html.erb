@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="main-body">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -39,9 +39,6 @@
     </nav>
     <div class="alert alert-warning" role="alert" style="display: <%= notice ? 'block' : 'none' %>">
       <%= notice %>
-    </div>
-    <div class="alert alert-danger" role="alert" style="display: <%= alert ? 'block' : 'none' %>">
-      <%= alert %>
     </div>
     <%= yield %>
   </body>
