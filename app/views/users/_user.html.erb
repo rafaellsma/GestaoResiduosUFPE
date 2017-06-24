@@ -3,6 +3,7 @@
     <td> <%=user.name%> </td>
     <td> <%=user.email%> </td>
     <td> <%=user.laboratory.name%> </td>
+    <td> <%=user.phone_ext%> </td>
     <td>
       <%= form_tag('/approve') do %>
         <%= hidden_field_tag 'user_id', user.id %>
