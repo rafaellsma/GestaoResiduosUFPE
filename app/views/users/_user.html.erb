@@ -1,15 +1,18 @@
 <% @users.each do |user| %>
-  <div id="user_<%=user.id%>" class="users">
-    <p> <%=user.name%> </p>
-    <p> <%=user.email%> </p>
-    <p> <%=user.laboratory.name%> </p>
+  <tr class="users">
+    <td> <%=user.name%> </td>
+    <td> <%=user.email%> </td>
+    <td> <%=user.laboratory.name%> </td>
+    <td> <%=user.phone_ext%> </td>
+    <td>
       <%= form_tag('/approve') do %>
         <%= hidden_field_tag 'user_id', user.id %>
         <% if user.approved %>
-          <%= submit_tag 'desaprove!' %>
+          <%= submit_tag 'desaprove!', class: 'btn btn-xs btn-desapprove' %>
         <% else %>
-          <%= submit_tag 'aprove!' %>
+          <%= submit_tag 'aprove!', class: 'btn btn-xs btn-approve ' %>
         <% end %>
       <% end %>
-  </div>
+    </td>
+  </tr>
 <% end %>

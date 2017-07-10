@@ -1,5 +1,23 @@
-<a href='/list?type=0'>usuarios nao aprovados</a>
-<a href='/list?type=1'>usuarios aprovados</a>
-<div id="users-div">
-  <%= render partial: 'user', locals: {users: @users} %>
+<div class="well">
+  <div class="pull-right">
+    <a class="btn" href="/list?type=0">Usuarios não aprovados</a>
+    <a class="btn" href="/list?type=1">Usuarios aprovados</a>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active in" id="home">
+      <div class="row">
+        <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Laboratório</th>
+                <th>Ramal</th>
+            </tr>
+        </thead>
+          <%= render partial: 'user', locals: {users: @users} %>
+        </table>
+        </div>
+    </div>
+    </div>
 </div>

@@ -1,3 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "./*"
+@import "./*";
+
+.main-body {
+  padding-top: 50px;
+}

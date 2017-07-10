@@ -105,3 +105,25 @@ a {
     border-color: #79af4c;
   }
 }
+
+.btn-approve {
+  background-color: #86c254;
+  color: #fff;
+  border-color: #79af4c;
+  &:hover, &:focus {
+    color: #fff;
+    background-color: #79af4c;
+    border-color: #79af4c;
+  }
+}
+
+.btn-desapprove {
+  background-color: #b22d47;
+  color: #fff;
+  border-color: #b22d41;
+  &:hover, &:focus {
+    color: #fff;
+    background-color: #9e283a;
+    border-color: #9e283a;
+  }
+}
