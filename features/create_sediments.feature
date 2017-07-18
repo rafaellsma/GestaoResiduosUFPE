@@ -20,12 +20,12 @@ Feature: Create sediments on system
       And I fill "sediment_composition" with "composicao"
       And I select "sediment_res_type" with "4" option
       And I click "Criar Residuo"
-      Then I can see message "Peso não pode ficar em branco"
+      Then I can see message "Peso em kg não pode ficar em branco"
 
   Scenario: User logged in try to create sediment without any fields
       Given I'm logged in as user
       When I go to create sediments page
       And I click "Criar Residuo"
-      Then I can see message "Peso não pode ficar em branco"
-      Then I can see message "Tipo não pode ficar em branco"
+      Then I can see message "Peso em kg não pode ficar em branco"
+      Then I can see message "Tipo de Resíduo não pode ficar em branco"
       Then I can see message "Composição não pode ficar em branco"

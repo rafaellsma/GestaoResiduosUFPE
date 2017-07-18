@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317175208) do
+ActiveRecord::Schema.define(version: 20170717132210) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20170317175208) do
     t.integer  "laboratory_id"
     t.decimal  "volume"
     t.string   "res_type"
+    t.string   "recipient_type"
+    t.string   "stock_location"
     t.index ["laboratory_id"], name: "index_sediments_on_laboratory_id"
     t.index ["user_id"], name: "index_sediments_on_user_id"
   end
