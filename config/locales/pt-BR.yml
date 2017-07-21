@@ -8,6 +8,7 @@ pt-BR:
       composition: 'Composição'
       res_type: 'Tipo'
       data_created: 'Data de criação'
+      enrollment: 'Nº do Siape ou Matrícula'
   activerecord:
     models:
       user: Usuario
@@ -259,4 +260,3 @@ pt-BR:
       index:
         name: "Nome"
         user: "Facilitador"
-

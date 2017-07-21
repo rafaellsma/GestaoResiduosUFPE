@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317175208) do
+ActiveRecord::Schema.define(version: 20170721190532) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170317175208) do
     t.boolean  "admin",                  default: false
     t.integer  "laboratory_id"
     t.boolean  "approved",               default: false
+    t.string   "enrollment"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["laboratory_id"], name: "index_users_on_laboratory_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
