@@ -38,7 +38,12 @@
 
   <div class="field">
     <%= f.label :stock_location %>
-    <%= f.text_field :stock_location %>
+    <%= select_tag 'stock', options_for_select([ 'Laboratório', 'Abrigo', 'Outros' ], 'Laboratório'), id: 'stock_dropdown' %>
+  </div>
+
+  <div id="stock_location_div" class="field" style="display: none">
+    <%= f.label 'Digite o outro local' %>
+    <%= f.text_field :stock_location, id: 'stock_location_input', value: 'Laboratório' %>
   </div>
 
   <div class="actions">
