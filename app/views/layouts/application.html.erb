@@ -16,23 +16,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <%= link_to root_path, class:'navbar-brand' do %>
             <%= image_tag('brand', class: 'brand-nav') %>
-          </a>
+          <% end %>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapsed">
           <!-- Parte da Esquerda -->
           <ul class="nav navbar-nav">
-            <li><a href="#">Membros <span class="sr-only">(current)</span></a></li>
+            <li> <%= link_to 'Sistema de Gerenciamento de Resíduos', root_path %> </li>
           </ul>
           <!-- Parte da direita -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conta <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerenciar <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li style="color: blue;"> <%= link_to 'Sair', destroy_user_session_url %> </li>
+                <li> <%= link_to 'Centros', centers_url %> </li>
+                <li> <%= link_to 'Departamentos', departments_url %> </li>
+                <li> <%= link_to 'Laboratórios', laboratories_url %> </li>
+                <li> <%= link_to 'Usuários', list_url %> </li>
               </ul>
             </li>
+            <li> <%= link_to 'Sair', destroy_user_session_url %> </li>
           </ul>
         </div>
       </div>
@@ -40,6 +44,8 @@
     <div class="alert alert-warning" role="alert" style="display: <%= notice ? 'block' : 'none' %>">
       <%= notice %>
     </div>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
