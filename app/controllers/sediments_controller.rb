@@ -5,6 +5,9 @@ class SedimentsController < ApplicationController
   # GET /sediments.json
   def index
     @sediments = Sediment.all
+    unless current_user.admin?
+      @sediments = current_user.sediments
+    end
   end
 
   # GET /sediments/1
