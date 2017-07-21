@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20170721190532) do
     t.integer  "laboratory_id"
     t.decimal  "volume"
     t.string   "res_type"
+    t.string   "recipient_type"
+    t.string   "stock_location"
     t.index ["laboratory_id"], name: "index_sediments_on_laboratory_id"
     t.index ["user_id"], name: "index_sediments_on_user_id"
   end

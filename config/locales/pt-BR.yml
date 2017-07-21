@@ -4,9 +4,12 @@ pt-BR:
       password_confirmation: 'Confirme sua senha'
       password: 'Senha'
       phone_ext: 'Ramal'
-      weight: 'Peso'
+      weight: 'Peso em kg'
       composition: 'Composição'
-      res_type: 'Tipo'
+      res_type: 'Tipo de Resíduo'
+      recipient_type: 'Tipo de Recipiente'
+      stock_location: 'Local de estoque do resíduo'
+      volume: 'Volume em ml (opcional)'
       data_created: 'Data de criação'
       enrollment: 'Nº do Siape ou Matrícula'
   activerecord:
@@ -246,10 +249,12 @@ pt-BR:
     sediments:
       index:
         composition: "Composição"
-        weight: "Peso"
-        type: "Tipo"
-        volume: "Volume"
-        local: "Localização (Laboratório)"
+        weight: "Peso (kg)"
+        type: "Tipo de Resíduo"
+        recipient_type: "Tipo de Recipiente"
+        stock_location: "Local do resíduo"
+        volume: "Volume (ml)"
+        local: "Gerador (Laboratório)"
         data: "Data de Registro"
       errors: "Erros ocorreram neste cadastro de resíduo:"
 

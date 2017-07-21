@@ -72,6 +72,7 @@ class SedimentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sediment_params
-      params.require(:sediment).permit(:composition, :weight, :local, :res_type, :volume ,:data_registered)
+      params.require(:sediment).permit(:composition, :weight, :recipient_type,
+      :local, :res_type, :volume,:data_registered, :stock_location)
     end
 end

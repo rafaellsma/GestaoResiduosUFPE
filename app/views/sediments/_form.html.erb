@@ -22,13 +22,28 @@
   </div>
 
   <div class="field">
+    <%= f.label :recipient_type %>
+    <%= f.select(:recipient_type, Sediment::RECIPIENT_TYPES, prompt: 'Selecione o Recipiente') %>
+  </div>
+
+  <div class="field">
     <%= f.label :weight %>
-    <%= f.text_field :weight %>
+    <%= f.number_field :weight, step: :any %>
   </div>
 
   <div class="field">
     <%= f.label :volume %>
-    <%= f.text_field :volume %>
+    <%= f.number_field :volume, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= f.label :stock_location %>
+    <%= select_tag 'stock', options_for_select([ 'Laboratório', 'Abrigo', 'Outros' ], 'Laboratório'), id: 'stock_dropdown' %>
+  </div>
+
+  <div id="stock_location_div" class="field" style="display: none">
+    <%= f.label 'Digite o outro local' %>
+    <%= f.text_field :stock_location, id: 'stock_location_input', value: 'Laboratório' %>
   </div>
 
   <div class="actions">
