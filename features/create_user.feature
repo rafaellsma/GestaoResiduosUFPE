@@ -23,3 +23,17 @@ Feature: Create users
     And User with email "test@test.com" isnt approved
     And User with email "test@test.com" isnt admin
     And Exists 1 notifications
+
+    Scenario: create admin user with success
+      Given Exists one admin
+      And I go to login page
+      And I fill "user_email" with "admin@admin.com"
+      And I fill "user_password" with "admin123"
+      And I make login
+      When I go to register admin page
+      And I fill "user_name" with "admin2"
+      And I fill "user_email" with "admin2@ufpe.br"
+      And I fill "user_password" with "adminpass"
+      And I fill "user_phone_ext" with 4242
+      And I submit new admin user form
+      Then I can see a message "Usuario Admin Criado com sucesso"

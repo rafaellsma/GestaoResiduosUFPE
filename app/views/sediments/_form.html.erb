@@ -1,7 +1,7 @@
 <%= form_for(sediment) do |f| %>
   <% if sediment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sediment.errors.count, "error") %> prohibited this sediment from being saved:</h2>
+      <h2><%= pluralize(sediment.errors.count, t('content.sediments.errors')) %></h2>
 
       <ul>
       <% sediment.errors.full_messages.each do |message| %>
@@ -18,21 +18,32 @@
 
   <div class="field">
     <%= f.label :res_type %>
-    <%= f.select :res_type, options_for_select(["Sólido Orgânico",
-                                               "Sólido Inorgânico", "Líquido Inorgânico",
-                                               "Líquido Inflamável", "Líquido Orgânico",
-                                               "Outros (risco ao meio ambiente)"]
-    ), prompt: 'Selecione um Tipo' %>
+    <%= f.select(:res_type, Sediment::SEDIMENT_TYPES, prompt: 'Selecione o tipo') %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recipient_type %>
+    <%= f.select(:recipient_type, Sediment::RECIPIENT_TYPES, prompt: 'Selecione o Recipiente') %>
   </div>
 
   <div class="field">
     <%= f.label :weight %>
-    <%= f.text_field :weight %>
+    <%= f.number_field :weight, step: :any %>
   </div>
 
   <div class="field">
     <%= f.label :volume %>
-    <%= f.text_field :volume %>
+    <%= f.number_field :volume, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= f.label :stock_location %>
+    <%= select_tag 'stock', options_for_select([ 'Laboratório', 'Abrigo', 'Outros' ], 'Laboratório'), id: 'stock_dropdown' %>
+  </div>
+
+  <div id="stock_location_div" class="field" style="display: none">
+    <%= f.label 'Digite o outro local' %>
+    <%= f.text_field :stock_location, id: 'stock_location_input', value: 'Laboratório' %>
   </div>
 
   <div class="actions">

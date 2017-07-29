@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :phone_ext, presence: true
   validates :laboratory, presence: true, unless: [:admin?]
+  validates :enrollment, presence: true, unless: [:admin?]
 
   #callbacks
   after_create :send_notification_admin

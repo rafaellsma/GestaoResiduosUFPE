@@ -5,6 +5,9 @@ class SedimentsController < ApplicationController
   # GET /sediments.json
   def index
     @sediments = Sediment.all
+    unless current_user.admin?
+      @sediments = current_user.sediments
+    end
   end
 
   # GET /sediments/1
@@ -28,7 +31,7 @@ class SedimentsController < ApplicationController
     @sediment.data_registered = Time.now
     @sediment.laboratory = current_user.laboratory
     @sediment.user = current_user
-    @sediment.local = current_user.laboratory
+    @sediment.local = current_user.laboratory.name
     respond_to do |format|
       if @sediment.save
         format.html { redirect_to @sediment, notice: 'Residuo foi criado com sucesso.' }
@@ -72,6 +75,7 @@ class SedimentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sediment_params
-      params.require(:sediment).permit(:composition, :weight, :local, :data_created,:res_type ,:data_registered)
+      params.require(:sediment).permit(:composition, :weight, :recipient_type,
+      :local, :res_type, :volume,:data_registered, :stock_location)
     end
 end
