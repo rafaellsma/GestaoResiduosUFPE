@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     resources :sediments
   end
 
-  get 'report', to: 'reports#generate'
-  post 'report', to: 'reports#create'
-
   authenticate :user, lambda { |u| u.admin? } do
     get 'register_admin', to: 'users#new_admin'
     post 'register_admin', to: 'users#create'
@@ -18,6 +15,7 @@ Rails.application.routes.draw do
     resources :laboratories
     resources :departments
     resources :centers
+    post 'report', to: 'reports#create'
   end
 
   devise_scope :user do

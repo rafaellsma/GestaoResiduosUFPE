@@ -1,14 +1,24 @@
 <div class="row" style="margin: 20px">
-  <div class="col-md-6 col-md-offset-3">
+  <% if current_user.admin? %>
     <div class="row">
+      <%= form_tag(report_path, class: 'form-inline pull-right') do %>
+        <div class="form-group">
+          <%= date_field_tag :initial_date, Date.today - 10.days, class: 'form-control'%>
+          <%= date_field_tag :final_date, Date.today, class: 'form-control'%>
+        </div>
+        <%= button_tag 'Gerar relatório', class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="col-md-6">
+      <%= button_to 'Cadastrar Resíduo', new_sediment_path, method: :get, class: 'center-block btn btn-default' %>
+    </div>
+    <div class="col-md-6">
       <div class="col-md-6">
-        <%= button_to 'Cadastrar Resíduo', new_sediment_path, method: :get, class: 'btn btn-default btn-lg' %>
-      </div>
-      <div class="col-md-6">
-        <%= button_to 'Imprimir', new_sediment_path, class: 'btn btn-default btn-lg' %>
+        <%= button_to 'Imprimir', new_sediment_path, class: 'center-block btn btn-default btn-lg' %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
 <div class="row">
   <div class="well">

@@ -1,16 +1,8 @@
 require "prawn"
 
 class ReportsController < ApplicationController
-	def initialize
-		@sediments = []
-	end
-
-	def generate
-		
-	end
-
 	def create
-		@sediments = Sediment.where("data_created >= ? AND data_created <= ?", params[:initial_date], params[:final_date])
+		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
 		send_data generate_pdf(@sediments),
           filename: "sediments.pdf",
           type: "application/pdf"
