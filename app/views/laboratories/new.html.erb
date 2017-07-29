@@ -2,4 +2,10 @@
 
 <%= render 'form', laboratory: @laboratory %>
 
-<%= link_to 'Back', laboratories_path %>
+<div class="row" style="margin: 5px">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Voltar', laboratories_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>

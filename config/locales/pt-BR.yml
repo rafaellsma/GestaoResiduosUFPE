@@ -289,3 +289,5 @@ pt-BR:
       index:
         name: "Nome"
         user: "Facilitador"
+        department: "Departamento"
+        center: "Centro"

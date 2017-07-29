@@ -1,30 +1,50 @@
-<p id="notice"><%= notice %></p>
 
 <h1><%= t('headers.laboratories.index')%></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= t('content.laboratories.index.name')%></th>
-      <th><%= t('content.laboratories.index.user')%></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @laboratories.each do |laboratory| %>
-      <tr>
-        <td><%= laboratory.name %></td>
-        <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
-              <%end%></td>
-        <td><%= link_to 'Show', laboratory %></td>
-        <td><%= link_to 'Edit', edit_laboratory_path(laboratory) %></td>
-        <td><%= link_to 'Destroy', laboratory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="well">
+    <div class="table-responsive">
+      <table class="table">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th><%= t('content.laboratories.index.name')%></th>
+            <th><%= t('content.laboratories.index.user')%></th>
+            <th><%= t('content.laboratories.index.department')%></th>
+            <th><%= t('content.laboratories.index.center')%></th>
+          </tr>
+          </thead>
+          <% @laboratories.each do |laboratory| %>
+              <tr class>
+                <td><%= laboratory.name %></td>
+                <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
+                  <%end%></td>
+                <td><%= laboratory.department.name %></td>
+                <td><%= laboratory.department.center.name %></td>
+                <td>
+                  <%= link_to edit_laboratory_path(laboratory) do %>
+                      <span class="glyphicon glyphicon-pencil"/>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to laboratory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span class="glyphicon glyphicon-trash"/>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Laboratory', new_laboratory_path %>
+<div class="row">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>
