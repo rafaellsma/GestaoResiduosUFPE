@@ -85,24 +85,6 @@ class ReportsController < ApplicationController
 				end
 			end
 		end
-		# sediments.each do |sed|
-		# 	checkingForNewPage(pdf)
-		# 	savedCursor = pdf.cursor
-		# 	pdf.bounding_box([0, pdf.cursor], :width => 180, :height => 50) do
-		# 		 pdf.move_down 3
-		# 		 pdf.text sed.local, :indent_paragraphs => 3
-		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
-		# 	end
-		# 	pdf.bounding_box([180, savedCursor], :width => 180, :height => 50) do
-		# 		 pdf.move_down 3
-		# 		 pdf.text sed.composition, :indent_paragraphs => 3
-		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
-		# 	end
-		# 	pdf.bounding_box([360, savedCursor], :width => 180, :height => 50) do
-		# 		 pdf.move_down 3
-		# 		 pdf.text sed.weight.to_s, :indent_paragraphs => 3
-		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
-		# end
 	end
 	end
 
