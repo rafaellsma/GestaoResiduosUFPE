@@ -1,27 +1,43 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Centers</h1>
+<h1><%= t('headers.centers.index') %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @centers.each do |center| %>
-      <tr>
-        <td><%= center.name %></td>
-        <td><%= link_to 'Show', center %></td>
-        <td><%= link_to 'Edit', edit_center_path(center) %></td>
-        <td><%= link_to 'Destroy', center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="well">
+    <div class="table-responsive">
+      <table class="table">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th><%= t('content.centers.index.name')%></th>
+          </tr>
+          </thead>
+          <% @centers.each do |center| %>
+              <tr class>
+                <td> <%=center.name%> </td>
+                <td>
+                  <%= link_to edit_center_path(center) do %>
+                      <span class="glyphicon glyphicon-pencil"/>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to center, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span class="glyphicon glyphicon-trash"/>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Center', new_center_path %>
+<div class="row">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Cadastrar Centro', new_center_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>

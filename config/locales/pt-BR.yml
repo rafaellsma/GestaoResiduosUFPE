@@ -13,9 +13,14 @@ pt-BR:
       data_created: 'Data de criação'
       enrollment: 'Nº do Siape ou Matrícula'
   activerecord:
+    successful:
+      messages:
+        created: "%{model} foi criado com sucesso!"
+        updated: "%{model} foi atualizado com sucesso!"
     models:
       user: Usuario
       sediment: Residuo
+      center: Centro
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -235,6 +240,11 @@ pt-BR:
       short: "%d de %B, %H:%M"
     pm: ''
   headers:
+    centers:
+      new: "Cadastrar novo centro"
+      index: "Listagem Centros"
+      edit: "Editar Centro"
+
     sediments:
       new: "Cadastrar novo resíduo"
       index: "Listagem Resíduos"
@@ -246,6 +256,9 @@ pt-BR:
       index: "Listagem Laboratórios"
       edit: "Editar Laboratório"
   content:
+    centers:
+      index:
+        name: "Nome"
     sediments:
       index:
         composition: "Composição"
