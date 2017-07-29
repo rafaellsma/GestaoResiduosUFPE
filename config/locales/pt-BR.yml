@@ -21,6 +21,7 @@ pt-BR:
       user: Usuario
       sediment: Residuo
       center: Centro
+      department: Departamento
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -244,7 +245,10 @@ pt-BR:
       new: "Cadastrar novo centro"
       index: "Listagem Centros"
       edit: "Editar Centro"
-
+    departments:
+      new: "Cadastrar novo departamento"
+      index: "Listagem Departamentos"
+      edit: "Editar Departamento"
     sediments:
       new: "Cadastrar novo resíduo"
       index: "Listagem Resíduos"
@@ -259,6 +263,13 @@ pt-BR:
     centers:
       index:
         name: "Nome"
+    departments:
+      index:
+        name: "Nome"
+        center: "Centro"
+        chief: "Chefe"
+        email: "Email"
+        phone_ext: "Ramal"
     sediments:
       index:
         composition: "Composição"
