@@ -28,7 +28,7 @@ class LaboratoriesController < ApplicationController
 
     respond_to do |format|
       if @laboratory.save
-        format.html { redirect_to @laboratory, notice: 'Laboratory was successfully created.' }
+        format.html { redirect_to laboratories_path, notice: t('activerecord.successful.messages.created', model: @laboratory.class.model_name.human) }
         format.json { render :show, status: :created, location: @laboratory }
       else
         format.html { render :new }
@@ -42,7 +42,8 @@ class LaboratoriesController < ApplicationController
   def update
     respond_to do |format|
       if @laboratory.update(laboratory_params)
-        format.html { redirect_to @laboratory, notice: 'Laboratory was successfully updated.' }
+        format.html { redirect_to laboratories_path, notice: t('activerecord.successful.messages.updated',
+                                                               model: @laboratory.class.model_name.human) }
         format.json { render :show, status: :ok, location: @laboratory }
       else
         format.html { render :edit }
