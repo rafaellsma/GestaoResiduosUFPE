@@ -3,15 +3,15 @@ require "prawn"
 class ReportsController < ApplicationController
 	def create
 		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
-		send_data generate_pdf(@sediments),
+		send_data generate_pdf(@sediments, params[:initial_date], params[:final_date]),
           filename: "sediments.pdf",
           type: "application/pdf"
 	end
 
-	def generate_pdf(sediments)
+	def generate_pdf(sediments, initial_date, final_date)
 		pdf = Prawn::Document.new
 		generateFirstPartPdf(pdf)
-		generateSecondPartPdf(pdf, sediments)
+		generateSecondPartPdf(pdf, sediments, initial_date, final_date)
 		generateThirdPartPdf(pdf)
 		generateFourthPartPdf(pdf)
 		generateFifthPartPdf(pdf)
@@ -36,7 +36,7 @@ class ReportsController < ApplicationController
 		end
 	end
 
-	def generateSecondPartPdf(pdf, sediments)
+	def generateSecondPartPdf(pdf, sediments, initial_date, final_date)
 		pdf.bounding_box([0, pdf.cursor], :width => 540) do
 			 pdf.move_down 3
 			 pdf.text "2. DESCRIÇÃO DOS RESÍDUOS", :indent_paragraphs => 3
@@ -46,38 +46,63 @@ class ReportsController < ApplicationController
 		savedCursor = pdf.cursor
 		pdf.bounding_box([0, pdf.cursor], :width => 180) do
 			 pdf.move_down 3
-			 pdf.text "Fonte / Origem", :indent_paragraphs => 3
+			 pdf.text "Centro", :indent_paragraphs => 3
 			 pdf.transparent(0.5) { pdf.stroke_bounds }
 		end
 		pdf.bounding_box([180, savedCursor], :width => 180) do
 			 pdf.move_down 3
-			 pdf.text "Composição", :indent_paragraphs => 3
+			 pdf.text "Tipo dos resíduos", :indent_paragraphs => 3
 			 pdf.transparent(0.5) { pdf.stroke_bounds }
 		end
 		pdf.bounding_box([360, savedCursor], :width => 180) do
 			 pdf.move_down 3
-			 pdf.text "Peso", :indent_paragraphs => 3
+			 pdf.text "Quantidade total (Kg)", :indent_paragraphs => 3
 			 pdf.transparent(0.5) { pdf.stroke_bounds }
 		end
 
-		sediments.each do |sed|
-			checkingForNewPage(pdf)
-			savedCursor = pdf.cursor
-			pdf.bounding_box([0, pdf.cursor], :width => 180, :height => 50) do
-				 pdf.move_down 3
-				 pdf.text sed.local, :indent_paragraphs => 3
-				 pdf.transparent(0.5) { pdf.stroke_bounds }
+		centers = Center.all
+
+		centers.each do |center|
+			Sediment::SEDIMENT_TYPES.each do |res_type|
+				amount = center.amount_sediments(initial_date, final_date, res_type)
+				if amount != 0
+					checkingForNewPage(pdf)
+					savedCursor = pdf.cursor
+					pdf.bounding_box([0, pdf.cursor], :width => 180, :height => 50) do
+						 pdf.move_down 3
+						 pdf.text center.name, :indent_paragraphs => 3
+						 pdf.transparent(0.5) { pdf.stroke_bounds }
+					end
+					pdf.bounding_box([180, savedCursor], :width => 180, :height => 50) do
+						 pdf.move_down 3
+						 pdf.text res_type, :indent_paragraphs => 3
+						 pdf.transparent(0.5) { pdf.stroke_bounds }
+					end
+					pdf.bounding_box([360, savedCursor], :width => 180, :height => 50) do
+						 pdf.move_down 3
+						 pdf.text amount.to_s, :indent_paragraphs => 3
+						 pdf.transparent(0.5) { pdf.stroke_bounds }
+				end
 			end
-			pdf.bounding_box([180, savedCursor], :width => 180, :height => 50) do
-				 pdf.move_down 3
-				 pdf.text sed.composition, :indent_paragraphs => 3
-				 pdf.transparent(0.5) { pdf.stroke_bounds }
-			end
-			pdf.bounding_box([360, savedCursor], :width => 180, :height => 50) do
-				 pdf.move_down 3
-				 pdf.text sed.weight.to_s, :indent_paragraphs => 3
-				 pdf.transparent(0.5) { pdf.stroke_bounds }
 		end
+		# sediments.each do |sed|
+		# 	checkingForNewPage(pdf)
+		# 	savedCursor = pdf.cursor
+		# 	pdf.bounding_box([0, pdf.cursor], :width => 180, :height => 50) do
+		# 		 pdf.move_down 3
+		# 		 pdf.text sed.local, :indent_paragraphs => 3
+		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
+		# 	end
+		# 	pdf.bounding_box([180, savedCursor], :width => 180, :height => 50) do
+		# 		 pdf.move_down 3
+		# 		 pdf.text sed.composition, :indent_paragraphs => 3
+		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
+		# 	end
+		# 	pdf.bounding_box([360, savedCursor], :width => 180, :height => 50) do
+		# 		 pdf.move_down 3
+		# 		 pdf.text sed.weight.to_s, :indent_paragraphs => 3
+		# 		 pdf.transparent(0.5) { pdf.stroke_bounds }
+		# end
 	end
 	end
 
