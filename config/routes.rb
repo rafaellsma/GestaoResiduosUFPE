@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :laboratories
     resources :departments
     resources :centers
+    post 'report', to: 'reports#create'
   end
 
   devise_scope :user do
