@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :centers
     post 'report', to: 'reports#create'
+    post 'spreadsheet', to: 'spreadsheets#create'
   end
 
   devise_scope :user do
