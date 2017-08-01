@@ -1,6 +1,10 @@
-<h1>Editing Department</h1>
+<h1><%= t('headers.departments.edit') %></h1>
 
 <%= render 'form', department: @department %>
-
-<%= link_to 'Show', @department %> |
-<%= link_to 'Back', departments_path %>
+<div class="row" style="margin: 5px">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Voltar', departments_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>

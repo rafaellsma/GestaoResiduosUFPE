@@ -1,5 +1,10 @@
-<h1>New Center</h1>
-
+<h1><%= t('headers.centers.new') %></h1>
+<div class="row" style="margin: 10px">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Voltar', centers_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>
 <%= render 'form', center: @center %>
 
-<%= link_to 'Back', centers_path %>

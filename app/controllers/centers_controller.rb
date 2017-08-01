@@ -28,7 +28,7 @@ class CentersController < ApplicationController
 
     respond_to do |format|
       if @center.save
-        format.html { redirect_to @center, notice: 'Center was successfully created.' }
+        format.html { redirect_to centers_path, notice: t('activerecord.successful.messages.created', model: @center.class.model_name.human)}
         format.json { render :show, status: :created, location: @center }
       else
         format.html { render :new }
@@ -42,11 +42,9 @@ class CentersController < ApplicationController
   def update
     respond_to do |format|
       if @center.update(center_params)
-        format.html { redirect_to @center, notice: 'Center was successfully updated.' }
-        format.json { render :show, status: :ok, location: @center }
+        format.html { redirect_to centers_path, notice: t('activerecord.successful.messages.updated', model: @center.class.model_name.human) }
       else
         format.html { render :edit }
-        format.json { render json: @center.errors, status: :unprocessable_entity }
       end
     end
   end

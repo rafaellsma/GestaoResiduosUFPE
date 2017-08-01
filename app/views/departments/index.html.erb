@@ -1,35 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Departments</h1>
+<h1><%= t('headers.departments.index') %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Center</th>
-      <th>Chief</th>
-      <th>Email</th>
-      <th>Phone ext</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @departments.each do |department| %>
-      <tr>
-        <td><%= department.name %></td>
-        <td><%= department.center %></td>
-        <td><%= department.chief %></td>
-        <td><%= department.email %></td>
-        <td><%= department.phone_ext %></td>
-        <td><%= link_to 'Show', department %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="well">
+    <div class="table-responsive">
+      <table class="table">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th><%= t('content.departments.index.name')%></th>
+            <th><%= t('content.departments.index.center')%></th>
+            <th><%= t('content.departments.index.chief')%></th>
+            <th><%= t('content.departments.index.email')%></th>
+            <th><%= t('content.departments.index.phone_ext')%></th>
+          </tr>
+          </thead>
+          <% @departments.each do |department| %>
+              <tr class>
+                <td> <%=department.name%> </td>
+                <td> <%=department.center.name%> </td>
+                <td> <%=department.chief%> </td>
+                <td> <%=department.email%> </td>
+                <td> <%=department.phone_ext%> </td>
+                <td>
+                  <%= link_to edit_department_path(department) do %>
+                      <span class="glyphicon glyphicon-pencil"/>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to department, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span class="glyphicon glyphicon-trash"/>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Department', new_department_path %>
+<div class="row">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_to 'Cadastrar Departamento', new_department_path, method: :get, class: 'btn btn-default btn-lg' %>
+    </div>
+  </div>
+</div>
