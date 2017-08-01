@@ -44,31 +44,13 @@ class SpreadsheetsController < ApplicationController
   end
 
   def autofit(worksheet)
-    (0...worksheet.column_count).each do |col|
-        @high = 1
-        row = 0
-        worksheet.column(col).each do |cell|
-            w = cell==nil || cell=='' ? 1 : cell.to_s.strip.split('').count+3
-            ratio = worksheet.row(row).format(col).font.size/10
-            w = (w*ratio).round
-            if w > @high
-                @high = w
-            end
-            row=row+1
-        end
-        worksheet.column(col).width = @high
-    end
-    (0...worksheet.row_count).each do |row|
-        @high = 1
-        col = 0
-        worksheet.row(row).each do |cell|
-            w = worksheet.row(row).format(col).font.size+4
-            if w > @high
-                @high = w
-            end
-            col=col+1
-        end
-        worksheet.row(row).height = @high
+    (0...worksheet.column_count).each do |col_idx| 
+      column = worksheet.column(col_idx)
+      column.width = column.each_with_index.map do |cell, row|
+        chars = cell.present? ? cell.to_s.strip.split('').count + 3 : 1
+        ratio = worksheet.row(row).format(col_idx).font.size / 10
+        (chars * ratio).round
+      end.max
     end
   end
 end
