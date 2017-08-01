@@ -251,7 +251,7 @@ pt-BR:
       edit: "Editar Departamento"
     sediments:
       new: "Cadastrar novo resíduo"
-      index: "Listagem Resíduos"
+      index: "Listagem resíduos"
       edit: "Editar Resíduo"
     users:
       new_admin: "Cadastrar novo usuário Administrador"
