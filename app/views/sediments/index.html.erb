@@ -44,7 +44,7 @@
     <div class="row">
       <div class="col-md-6">
         <% unless current_user.admin? %>
-          <%= button_tag 'Cadastrar resíduo', class: 'btn btn-default' %>
+          <%= button_to 'Cadastrar resíduo', new_sediment_path, method: :get, class: 'btn btn-default' %>
         <% end %>
       </div>
       <div class="col-md-6">
