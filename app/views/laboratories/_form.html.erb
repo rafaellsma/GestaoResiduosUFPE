@@ -22,8 +22,10 @@
     <%#</div> %>
 
   <div class="field">
+    <% @department = Department.all %>
+    <% options = options_from_collection_for_select(@department, 'id', 'name') %>
     <%= f.label :department_id %>
-    <%= f.text_field :department_id %>
+    <%= f.select :department_id, options %>
   </div>
 
   <div class="actions">

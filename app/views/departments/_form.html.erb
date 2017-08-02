@@ -17,8 +17,10 @@
   </div>
 
   <div class="field">
+    <% @center = Center.all %>
+    <% options = options_from_collection_for_select(@center, 'id', 'name') %>
     <%= f.label :center_id %>
-    <%= f.text_field :center_id %>
+    <%= f.select :center_id, options %>
   </div>
 
   <div class="field">
