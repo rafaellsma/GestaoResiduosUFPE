@@ -2,9 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout "devise", only: [:new, :create]
 
   def new
-    # @centers = Center.all
-    # @departments = Department.where("center_id = ?", @centers.first)
-    # @laboratories = Laboratory.where("department_id = ?", @departments.first)
     @centers = Center.with_laboratories_avaiable
     if @centers.empty?
       redirect_to new_user_session_path, notice: 'Nenhum laboratório está disp'\
