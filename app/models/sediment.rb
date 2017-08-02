@@ -1,6 +1,7 @@
 class Sediment < ApplicationRecord
   belongs_to :user
   belongs_to :laboratory
+  belongs_to :sediments_collect, optional: true
 
   validates :weight, presence: true
   validates :composition, presence: true

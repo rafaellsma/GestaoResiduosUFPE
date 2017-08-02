@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801144250) do
+ActiveRecord::Schema.define(version: 20170802145009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,8 +65,15 @@ ActiveRecord::Schema.define(version: 20170801144250) do
     t.string  "res_type"
     t.string  "recipient_type"
     t.string  "stock_location"
+    t.integer "sediments_collect_id"
     t.index ["laboratory_id"], name: "index_sediments_on_laboratory_id", using: :btree
+    t.index ["sediments_collect_id"], name: "index_sediments_on_sediments_collect_id", using: :btree
     t.index ["user_id"], name: "index_sediments_on_user_id", using: :btree
+  end
+
+  create_table "sediments_collects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170801144250) do
   add_foreign_key "laboratories", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "sediments", "laboratories"
+  add_foreign_key "sediments", "sediments_collects"
   add_foreign_key "sediments", "users"
   add_foreign_key "users", "laboratories"
 end

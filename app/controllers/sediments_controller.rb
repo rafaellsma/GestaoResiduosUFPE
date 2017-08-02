@@ -5,6 +5,9 @@ class SedimentsController < ApplicationController
   # GET /sediments.json
   def index
     @sediments = Sediment.all
+    @collect = SedimentsCollect.new(
+      sediments: Sediment.where(sediments_collect_id: nil)
+    )
     unless current_user.admin?
       @sediments = current_user.sediments
     end
