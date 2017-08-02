@@ -2,6 +2,8 @@ pt-BR:
   attributes:
       id: 'id'
       name: 'Nome'
+      center_id: 'Centro'
+      chief: 'Chefe'
       password_confirmation: 'Confirme sua senha'
       password: 'Senha'
       phone_ext: 'Ramal'
