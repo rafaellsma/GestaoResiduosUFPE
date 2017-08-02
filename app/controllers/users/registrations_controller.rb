@@ -1,10 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout "devise", only: [:new, :create]
-  
+
   def new
-    @centers = Center.all
-    @departments = Department.where("center_id = ?", @centers.first)
-    @laboratories = Laboratory.where("department_id = ?", @departments.first)
+    # @centers = Center.all
+    # @departments = Department.where("center_id = ?", @centers.first)
+    # @laboratories = Laboratory.where("department_id = ?", @departments.first)
+    @centers = Center.with_laboratories_avaiable
+    if @centers.empty?
+
+    end
+    @departments = Department.with_laboratories_avaiable_from_center(@centers.first)
+    @laboratories = Laboratory.avaiable_from_department(@centers.first)
+    p @laboratories
     super
   end
 
