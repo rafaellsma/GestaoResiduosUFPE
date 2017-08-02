@@ -31,7 +31,6 @@ class SedimentsController < ApplicationController
     @sediment.data_registered = Time.now
     @sediment.laboratory = current_user.laboratory
     @sediment.user = current_user
-    @sediment.local = current_user.laboratory.name
     respond_to do |format|
       if @sediment.save
         format.html { redirect_to @sediment, notice: 'Residuo foi criado com sucesso.' }
