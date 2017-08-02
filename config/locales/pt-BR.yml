@@ -3,6 +3,7 @@ pt-BR:
       id: 'id'
       name: 'Nome'
       center_id: 'Centro'
+      department_id: 'Departamento'
       chief: 'Chefe'
       password_confirmation: 'Confirme sua senha'
       password: 'Senha'
