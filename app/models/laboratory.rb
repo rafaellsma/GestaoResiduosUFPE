@@ -3,6 +3,10 @@ class Laboratory < ApplicationRecord
   has_many :sediments
   belongs_to :department
 
+  def self.avaiable_from_department(department)
+    self.where(user_id: nil , department: department)
+  end
+
   def amount_sediments(date_initial, date_final, type)
     amount = 0;
     sediments.each do |sediment|

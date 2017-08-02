@@ -8,4 +8,8 @@ class Center < ApplicationRecord
     end
     amount
   end
+
+  def self.with_laboratories_avaiable
+    self.joins(departments: :laboratories).includes(departments: [laboratories: :user]).where(users: {id: nil})
+  end
 end
