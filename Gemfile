@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'prawn', '~> 2.2.2'
 #Bootstrap to front-end
 gem 'bootstrap-sass'
+gem 'frontend-generators'
 #Use to generating xls
 gem 'spreadsheet'
 # Use Capistrano for deployment
