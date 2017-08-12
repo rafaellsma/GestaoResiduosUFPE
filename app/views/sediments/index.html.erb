@@ -34,6 +34,7 @@
             <th><%= t('content.sediments.index.stock_location')%></th>
             <th><%= t('content.sediments.index.volume')%></th>
             <th><%= t('content.sediments.index.local')%></th>
+            <th><%=t('content.laboratories.index.user')%></th>
             <th><%= t('content.sediments.index.date_registered')%></th>
             <th></th>
           </tr>
@@ -48,7 +49,8 @@
               <td> <%=sediment.stock_location%> </td>
               <td> <%=sediment.volume%> </td>
               <td> <%=sediment.laboratory.name%> </td>
-              <td> <%=sediment.data_registered%> </td>
+              <td> <%=sediment.laboratory.user.name%> </td>
+              <td> <%=sediment.data_registered.strftime('%d/%m/%Y')%> </td>
               <td>
                 <%= link_to edit_sediment_path(sediment) do %>
                   <span class="glyphicon glyphicon-pencil"/>
