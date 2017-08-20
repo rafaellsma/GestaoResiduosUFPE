@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "font_awesome";
-@import "./*";
+@import "navbar";
+@import "scaffolds";
+@import "users";
 
 .main-body {
   padding-top: 50px;
