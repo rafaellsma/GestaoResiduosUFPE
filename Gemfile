@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #Use for generating pdf
 gem 'prawn', '~> 2.2.2'
-#Bootstrap to front-end
-gem 'bootstrap-sass'
 #Use to generating xls
 gem 'spreadsheet'
 # Use Capistrano for deployment
