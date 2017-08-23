@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'about', to: 'freelancers#index'
+
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }

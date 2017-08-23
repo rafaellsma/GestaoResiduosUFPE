@@ -1,6 +1,8 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "./*";
+@import "font_awesome";
+@import "navbar";
+@import "scaffolds";
+@import "users";
 
 .main-body {
   padding-top: 50px;
@@ -8,7 +10,7 @@
 
 #myFooter {
   margin-top: 180px;
-  background-color: #9e283a;
+  background-color: #2c3e50;
   color: white;
 }
 
