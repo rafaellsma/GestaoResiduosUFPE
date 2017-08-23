@@ -284,7 +284,7 @@ pt-BR:
         stock_location: "Local do resíduo"
         volume: "Volume (ml)"
         local: "Gerador (Laboratório)"
-        data_registered: "Data de Registro"
+        date_registered: "Data de Registro"
         user_id: Facilitador
         laboratory_id: 'Laboratório'
       errors: "Erros ocorreram neste cadastro de resíduo:"
