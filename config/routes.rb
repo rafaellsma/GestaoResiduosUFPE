@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :centers
     post 'report', to: 'reports#create'
     post 'spreadsheet', to: 'spreadsheets#create'
-    resource :sediments_collect, only: [:create]
+    resource :sediments_collect, only: [:create, :destroy]
     get 'sediments_collects', to: 'sediments_collects#index'
   end
 

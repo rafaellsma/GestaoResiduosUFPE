@@ -13,17 +13,16 @@
         </tr>
         </thead>
         <tbody>
-        <% @collects.each do |collect| %>
+        <% @collects.each do |coll| %>
             <tr>
-              <td> <%=collect.id%> </td>
-              <td> <%=collect.created_at.strftime('%d/%m/%Y')%> </td>
-
+              <td> <%=coll.id%> </td>
+              <td> <%=coll.created_at.strftime('%d/%m/%Y')%> </td>
 
               <td>
-                <%= link_to sediments_path(collect) do %>
+                <%= link_to sediments_path(coll) do %>
                     <span class="glyphicon glyphicon-print fa-lg"/>
                 <% end %>
-                <%= link_to collect , method: :delete, data: { confirm: 'Apagar Coleta?' } do %>
+                <%= link_to coll, method: :delete, data: { confirm: 'Apagar Coleta?' } do %>
                     <span class="glyphicon glyphicon-trash"/>
                 <% end %>
               </td>
