@@ -1,0 +1,37 @@
+<div class="row col-md-12 center-block">
+  <h2><%= t('headers.sediments_collection.index') %></h2>
+</div>
+
+<div class="row col-md-12 center-block">
+  <div class="well">
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped">
+        <thead>
+        <tr>
+          <th><%= t('content.sediments_collection.index.id')%></th>
+          <th><%= t('content.sediments_collection.index.date')%></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @collects.each do |collect| %>
+            <tr>
+              <td> <%=collect.id%> </td>
+              <td> <%=collect.created_at.strftime('%d/%m/%Y')%> </td>
+
+
+              <td>
+                <%= link_to sediments_path(collect) do %>
+                    <span class="glyphicon glyphicon-print fa-lg"/>
+                <% end %>
+                <%= link_to collect , method: :delete, data: { confirm: 'Apagar Coleta?' } do %>
+                    <span class="glyphicon glyphicon-trash"/>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

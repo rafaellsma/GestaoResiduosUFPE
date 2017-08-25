@@ -3,9 +3,13 @@ class SedimentsCollectsController < ApplicationController
     sediments = Sediment.where(sediments_collect_id: nil)
     collect = SedimentsCollect.new(sediments: sediments)
     if collect.save
-      redirect_to sediments_path, notice: 'Solicitação criada com sucesso'
+      redirect_to sediments_collects_path, notice: 'Solicitação criada com sucesso'
     else
       redirect_to sediments_path, notice: 'Houve um erro na solicitação'
     end
+  end
+
+  def index
+    @collects = SedimentsCollect.all
   end
 end

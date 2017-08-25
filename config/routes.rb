@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post 'report', to: 'reports#create'
     post 'spreadsheet', to: 'spreadsheets#create'
     resource :sediments_collect, only: [:create]
+    get 'sediments_collects', to: 'sediments_collects#index'
   end
 
   devise_scope :user do

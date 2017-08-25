@@ -257,6 +257,8 @@ pt-BR:
       new: "Cadastrar novo resíduo"
       index: "Listagem resíduos"
       edit: "Editar Resíduo"
+    sediments_collection:
+      index: "Listagem de Coletas"
     users:
       new_admin: "Cadastrar novo usuário Administrador"
     laboratories:
@@ -288,7 +290,10 @@ pt-BR:
         user_id: Facilitador
         laboratory_id: 'Laboratório'
       errors: "Erros ocorreram neste cadastro de resíduo:"
-
+    sediments_collection:
+      index:
+        id: "ID"
+        date: "Data Coleta"
     users:
       not_approved: "Usuários não aprovados"
       approved: "Usuários aprovados"
