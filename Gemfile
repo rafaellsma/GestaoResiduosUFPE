@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'prawn', '~> 2.2.2'
 #Use to generating xls
 gem 'spreadsheet'
+#Use for generating doc
+gem 'htmltoword'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'frontend-generators'

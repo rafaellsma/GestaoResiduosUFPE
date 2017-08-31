@@ -1,6 +1,16 @@
 require "prawn"
 
 class ReportsController < ApplicationController
+	respond_to :docx
+
+	def doc
+		respond_to do |format|
+			format.docx do
+				render docx: 'manifesto', filename: 'manifesto.docx'
+			end
+		end
+	end
+
 	def create
 		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
 		send_data generate_pdf(@sediments, params[:initial_date], params[:final_date]),
