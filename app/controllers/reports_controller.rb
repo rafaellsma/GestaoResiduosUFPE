@@ -6,7 +6,10 @@ class ReportsController < ApplicationController
 	def doc
 		respond_to do |format|
 			format.docx do
-				render docx: 'manifesto', filename: 'manifesto.docx'
+				@sedimentsdoc = Sediment.where("data_registered >= ? AND data_registered <= ?",
+				params[:initial_date], params[:final_date])
+				render docx:'manifesto', filename: 'manifesto.docx'
+
 			end
 		end
 	end
@@ -81,6 +84,7 @@ class ReportsController < ApplicationController
 					pdf.bounding_box([0, pdf.cursor], :width => 180, :height => 50) do
 						 pdf.move_down 3
 						 pdf.text center.name, :indent_paragraphs => 3
+						 pdf.text department.name, :indent_paragraphs => 3
 						 pdf.transparent(0.5) { pdf.stroke_bounds }
 					end
 					pdf.bounding_box([180, savedCursor], :width => 180, :height => 50) do
