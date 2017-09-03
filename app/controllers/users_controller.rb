@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def approve
     user = User.find(params[:user_id])
+    p user
     @users = User.where(approved: false, admin: false)
     if params[:commit] == 'desaprove!'
       user.disapprove!

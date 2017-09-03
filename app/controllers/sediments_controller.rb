@@ -32,7 +32,6 @@ class SedimentsController < ApplicationController
   def create
     @sediment = Sediment.new(sediment_params)
     @sediment.data_registered = Time.now
-    @sediment.laboratory = current_user.laboratory
     @sediment.user = current_user
     respond_to do |format|
       if @sediment.save
@@ -78,6 +77,6 @@ class SedimentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sediment_params
       params.require(:sediment).permit(:composition, :weight, :recipient_type,
-      :local, :res_type, :volume,:data_registered, :stock_location)
+      :local, :res_type, :volume,:data_registered, :stock_location, :laboratory_id)
     end
 end

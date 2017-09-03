@@ -37,6 +37,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :laboratory %>
+    <%= f.select :laboratory_id, current_user.laboratories.map{|l| [l.name, l.id]} %>
+  </div>
+
+  <div class="field">
     <%= f.label :stock_location %>
     <%= select_tag 'stock', options_for_select([ 'Laboratório', 'Abrigo', 'Outros' ], 'Laboratório'), id: 'stock_dropdown' %>
   </div>

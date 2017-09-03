@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :phone_ext, presence: true
   validates :laboratories, presence: true, unless: [:admin?]
   validates :enrollment, presence: true, unless: [:admin?]
-  validate :already_user_with_laboratory
+  validate :already_user_with_laboratory, on: :create
   #callbacks
   after_create :send_notification_admin
 

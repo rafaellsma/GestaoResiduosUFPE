@@ -11,9 +11,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Centro</th>
-                <th>Departamento</th>
-                <th>Laboratório</th>
+                <th>Laboratórios</th>
                 <th>Ramal</th>
             </tr>
         </thead>
@@ -23,3 +21,6 @@
     </div>
     </div>
 </div>
+<% @users.each do |user| %>
+  <%= render partial: 'modal_user', locals: {user: user} %>
+<% end %>
