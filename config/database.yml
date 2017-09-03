@@ -12,7 +12,4 @@ test:
   database: gestao_test
 
 production:
-  <<: *default
-  database: gestao_production
-  username: <%= ENV['GESTAO_DATABASE_USERNAME'] %>
-  password: <%= ENV['GESTAO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
