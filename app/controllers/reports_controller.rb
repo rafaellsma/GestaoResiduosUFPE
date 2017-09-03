@@ -1,6 +1,20 @@
 require "prawn"
 
 class ReportsController < ApplicationController
+
+	def create_doc
+		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
+		Caracal::Document.save '/public/manifesto.docx' do |docx|
+			docx.font do
+				name 'Droid Serif'
+			end
+			docx.h1 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO			N.'
+
+		end
+		path = File.join(Rails.root, "public")
+		send_file(File.join(path, "manifesto.docx"))
+	end
+
 	def create
 		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
 		send_data generate_pdf(@sediments, params[:initial_date], params[:final_date]),
