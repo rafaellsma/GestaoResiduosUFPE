@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: gestao_production
-  username:
-  password:
+  username: <%= ENV['GESTAO_DATABASE_USERNAME'] %>
+  password: <%= ENV['GESTAO_DATABASE_PASSWORD'] %>
