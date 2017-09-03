@@ -7,4 +7,4 @@ default: &default
   pool: 5
 production:
   <<: *default
-url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
