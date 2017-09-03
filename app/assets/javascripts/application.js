@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require sediments
 //= require users
+//= require chosen-jquery
+//= require laboratories

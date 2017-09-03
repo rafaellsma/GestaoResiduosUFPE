@@ -20,8 +20,12 @@ class User < ApplicationRecord
 
   def already_user_with_laboratory
     laboratory_ids.each do |id|
-      if Laboratory.exists? id
-        self.errors.add(:already_user_with_laboratory, 'Já existe outro facilitador com o laboratório')
+      begin
+        unless Laboratory.find(id).user.blank?
+          self.errors.add(:already_user_with_laboratory, 'Já existe outro facilitador com o laboratório')
+        end
+      rescue
+        self.errors.add(:invalid_laboratory, 'Laboratório invalido')
       end
     end
   end

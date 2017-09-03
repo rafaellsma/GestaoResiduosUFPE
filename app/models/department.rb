@@ -9,4 +9,8 @@ class Department < ApplicationRecord
     end
     amount
   end
+
+  def center_name
+    center.name
+  end
 end

@@ -16,4 +16,12 @@ class Laboratory < ApplicationRecord
     end
     amount
   end
+
+  def department_name
+    department.name
+  end
+
+  def center_name
+    department.center_name
+  end
 end

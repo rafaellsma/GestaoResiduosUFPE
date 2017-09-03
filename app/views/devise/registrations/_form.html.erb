@@ -25,7 +25,10 @@
     </div>
 
     <div class="form-group">
-      <%= f.select :laboratory_ids, Laboratory.avaiables.map{|l| [l.name, l.id]}, {}, {multiple: true, size:10, class: 'form-control'} %>
+      <%= f.select :laboratory_ids,
+          Laboratory.avaiables.map{|l| ["#{l.name}/#{l.department_name}/#{l.center_name}", l.id]},{},
+          { class: 'chosen-select', multiple: true, data: { placeholder: "Laboratório/Departamento/Centro" } }
+      %>
     </div>
 
     <div class="form-group">
