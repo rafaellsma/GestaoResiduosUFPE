@@ -5,18 +5,26 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  belongs_to :laboratory, optional: true
+  has_many :laboratories
   has_many :sediments
   has_many :notifications
 
   #validation
   validates :name, presence: true
   validates :phone_ext, presence: true
-  validates :laboratory, presence: true, unless: [:admin?]
+  validates :laboratories, presence: true, unless: [:admin?]
   validates :enrollment, presence: true, unless: [:admin?]
-
+  validate :already_user_with_laboratory
   #callbacks
   after_create :send_notification_admin
+
+  def already_user_with_laboratory
+    laboratory_ids.each do |id|
+      if Laboratory.exists? id
+        self.errors.add(:already_user_with_laboratory, 'Já existe outro facilitador com o laboratório')
+      end
+    end
+  end
 
   def send_notification_admin
     if !self.admin

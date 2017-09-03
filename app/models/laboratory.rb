@@ -1,10 +1,10 @@
 class Laboratory < ApplicationRecord
-  has_one :user
+  belongs_to :user, optional: true
   has_many :sediments
   belongs_to :department
 
-  def self.avaiable_from_department(department)
-    self.where(user_id: nil , department: department)
+  def self.avaiables
+    self.where(user: nil)
   end
 
   def amount_sediments(date_initial, date_final, type)
