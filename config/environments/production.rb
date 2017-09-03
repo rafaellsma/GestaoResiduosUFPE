@@ -68,8 +68,10 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.assets.compile = true
-      config.assets.digest = true
+  config.assets.compile = false
+  
+  config.assets.digest = true
+  config.serve_static_assets = true
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
