@@ -1,10 +1,10 @@
 <div class="panel-heading">
   <div class="row">
     <div class="col-xs-6">
-      <%= link_to 'Entrar', new_user_session_url, id: 'login-form-link' %>
+      <%= link_to 'Entrar', new_user_session_url, id: 'login-form-link', :data { :no-turbolink => 'true'} %>
     </div>
     <div class="col-xs-6">
-      <%= link_to 'Cadastrar', new_user_registration_url, class: 'active', id: 'register-form-link' %>
+      <%= link_to 'Cadastrar', new_user_registration_url, class: 'active', id: 'register-form-link', :data { :no-turbolink => 'true'} %>
     </div>
   </div>
   <hr>
