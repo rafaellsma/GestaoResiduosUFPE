@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :sediments
   end
 
+  unauthenticated :user do
+    root :to => 'freelancers#index', as: :unauthenticated_root
+  end
+
   authenticate :user, lambda { |u| u.admin? } do
     get 'register_admin', to: 'users#new_admin'
     post 'register_admin', to: 'users#create'
@@ -28,10 +32,6 @@ Rails.application.routes.draw do
 
     authenticated :user do
       root :to => 'sediments#index'
-    end
-
-    unauthenticated :user do
-      root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
   end
 end
