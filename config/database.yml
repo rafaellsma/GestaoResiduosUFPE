@@ -1,15 +1,2 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-
-development:
-  <<: *default
-  database: gestao_development
-
-test:
-  <<: *default
-  database: gestao_test
-
 production:
   url: <%= ENV['DATABASE_URL'] %>
