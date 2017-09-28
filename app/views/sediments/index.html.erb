@@ -93,7 +93,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Relatório dos resíduos</h4>
       </div>
-      <%= form_tag(report_path, class: 'form') do %>
+      <%= form_tag(report_doc_path, class: 'form') do %>
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
@@ -115,7 +115,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
           <%= button_tag 'Gerar relatório', class: 'btn btn-default' %>
-          <%= link_to 'Gerar Manifesto Word', report_doc_path, class: 'btn btn-default' %>
+
         </div>
       <% end %>
     </div>

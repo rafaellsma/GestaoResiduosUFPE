@@ -20,6 +20,8 @@ class ReportsController < ApplicationController
 					text " ".concat(sediment.stock_location)
 				end
 			end
+
+			
 		end
 
 		path = File.join(Rails.root, "public")

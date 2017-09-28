@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :centers
     post 'report', to: 'reports#create'
-    get 'report_doc', to: 'reports#create_doc'
+    post 'report_doc', to: 'reports#create_doc'
     post 'spreadsheet', to: 'spreadsheets#create'
     resource :sediments_collect, only: [:create]
   end
