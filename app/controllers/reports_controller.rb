@@ -13,15 +13,33 @@ class ReportsController < ApplicationController
 				size 20
 			end
 
-			docx.h2 'Descricao de Residuos'
-			@sediments_doc.each do |sediment|
-				docx.p do
-					text sediment.composition
-					text " ".concat(sediment.stock_location)
+      docx.h1 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO			N.'
+
+      docx.h2 'Descricao de Residuos'
+
+
+			centers = Center.all
+
+			centers.each do |center|
+				Sediment::SEDIMENT_TYPES.each do |res_type|
+					amount = center.amount_sediments(params[:initial_date], params[:final_date], res_type)
+					if amount != 0
+						array = [center.name, res_type.to_s, amount.to_s]
+						docx.table [['Centro/Departamento/Laboratório','Tipo', 'Peso (kg)'],
+												array] do
+							border_color   '666666'   # sets the border color. defaults to 'auto'.
+							border_line    :single    # sets the border style. defaults to :single. see OOXML docs for details.
+							border_size    4          # sets the border width. defaults to 0. units in twips.
+							border_spacing 4          # sets the spacing around the border. defaults to 0. units in twips.
+							cell_style cols[2], width: 1000
+						end
+					end
 				end
 			end
 
-			
+
+
+
 		end
 
 		path = File.join(Rails.root, "public")
