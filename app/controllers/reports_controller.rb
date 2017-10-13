@@ -1,6 +1,56 @@
 require "prawn"
 
 class ReportsController < ApplicationController
+
+	def create_doc
+
+		@sediments_doc = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
+		Caracal::Document.save '/public/manifesto.docx' do |docx|
+			docx.style do
+				id 'Body'
+				name 'body'
+				font 'Times New Roman'
+				size 20
+			end
+
+      docx.h2 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO N.'
+			docx.h1 ' '
+      docx.h3 'Descrição de Resíduos por Laboratório:'
+			docx.h1 ' '
+
+			centers = Center.all
+
+			centers.each do |center|
+				center.get_departments.each do |department|
+					department.get_laboratories.each do |laboratory|
+						Sediment::SEDIMENT_TYPES.each do |res_type|
+							amount = center.amount_sediments(params[:initial_date], params[:final_date], res_type)
+							if amount != 0
+								array = [center.name, laboratory.name, res_type.to_s, amount.to_s]
+								docx.table [['Centro', 'Laboratório' ,'Tipo', 'Peso (kg)'],
+														array] do
+									border_color   '666666'   # sets the border color. defaults to 'auto'.
+									border_line    :single    # sets the border style. defaults to :single. see OOXML docs for details.
+									border_size    4          # sets the border width. defaults to 0. units in twips.
+									border_spacing 4          # sets the spacing around the border. defaults to 0. units in twips.
+									cell_style cols[3], width: 1000
+									cell_style cols[2], width: 2400
+								end
+							end
+						end
+					end
+				end
+			end
+
+
+
+
+		end
+
+		path = File.join(Rails.root, "public")
+		send_file(File.join(path, "manifesto.docx"))
+	end
+
 	def create
 		@sediments = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
 		send_data generate_pdf(@sediments, params[:initial_date], params[:final_date]),
