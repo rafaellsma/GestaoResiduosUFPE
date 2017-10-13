@@ -12,6 +12,10 @@ class Department < ApplicationRecord
     self.includes(:laboratories)
   end
 
+  def get_laboratories
+    laboratories
+  end
+
   def amount_sediments(date_initial, date_final, type)
     amount = 0;
     laboratories.each do |lab|

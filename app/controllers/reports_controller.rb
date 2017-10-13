@@ -13,25 +13,30 @@ class ReportsController < ApplicationController
 				size 20
 			end
 
-      docx.h1 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO			N.'
-
-      docx.h2 'Descricao de Residuos'
-
+      docx.h2 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO N.'
+			docx.h1 ' '
+      docx.h3 'Descrição de Resíduos por Laboratório:'
+			docx.h1 ' '
 
 			centers = Center.all
 
 			centers.each do |center|
-				Sediment::SEDIMENT_TYPES.each do |res_type|
-					amount = center.amount_sediments(params[:initial_date], params[:final_date], res_type)
-					if amount != 0
-						array = [center.name, res_type.to_s, amount.to_s]
-						docx.table [['Centro/Departamento/Laboratório','Tipo', 'Peso (kg)'],
-												array] do
-							border_color   '666666'   # sets the border color. defaults to 'auto'.
-							border_line    :single    # sets the border style. defaults to :single. see OOXML docs for details.
-							border_size    4          # sets the border width. defaults to 0. units in twips.
-							border_spacing 4          # sets the spacing around the border. defaults to 0. units in twips.
-							cell_style cols[2], width: 1000
+				center.get_departments.each do |department|
+					department.get_laboratories.each do |laboratory|
+						Sediment::SEDIMENT_TYPES.each do |res_type|
+							amount = center.amount_sediments(params[:initial_date], params[:final_date], res_type)
+							if amount != 0
+								array = [center.name, laboratory.name, res_type.to_s, amount.to_s]
+								docx.table [['Centro', 'Laboratório' ,'Tipo', 'Peso (kg)'],
+														array] do
+									border_color   '666666'   # sets the border color. defaults to 'auto'.
+									border_line    :single    # sets the border style. defaults to :single. see OOXML docs for details.
+									border_size    4          # sets the border width. defaults to 0. units in twips.
+									border_spacing 4          # sets the spacing around the border. defaults to 0. units in twips.
+									cell_style cols[3], width: 1000
+									cell_style cols[2], width: 2400
+								end
+							end
 						end
 					end
 				end
