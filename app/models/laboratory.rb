@@ -25,4 +25,8 @@ class Laboratory < ApplicationRecord
   def center_name
     department.center.name
   end
+
+  def total_weight
+    sediments.map{ |a| a.sediments_collect.blank? ? a.weight : 0}.reduce(0,:+)
+  end
 end

@@ -28,6 +28,7 @@
               <th><%= t('content.laboratories.index.user')%></th>
               <th><%= t('content.laboratories.index.department')%></th>
               <th><%= t('content.laboratories.index.center')%></th>
+              <th><%= "Peso de residuos não coletados"%></th>
             </tr>
             </thead>
             <% @laboratories.each do |laboratory| %>
@@ -37,6 +38,7 @@
                     <%end%></td>
                   <td><%= laboratory.department.name %></td>
                   <td><%= laboratory.department.center.name %></td>
+                  <td><%= laboratory.total_weight%></td>
                   <td>
                     <%= link_to laboratory_sediments_path(laboratory) do %>
                         <span class="glyphicon glyphicon-eye-open"/>
