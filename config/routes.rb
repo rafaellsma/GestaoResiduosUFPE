@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     resources :sediments, except: [:index]
     resources :departments
     resources :centers
-    post 'report', to: 'reports#create'
-    post 'report_doc', to: 'reports#create_doc'
     post 'spreadsheet', to: 'spreadsheets#create'
     resources :laboratories do
       resources :sediments_collects, only: [:create]
