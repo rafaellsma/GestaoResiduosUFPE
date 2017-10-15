@@ -4,9 +4,10 @@ class SedimentsController < ApplicationController
   # GET /sediments
   # GET /sediments.json
   def index
-    @sediments = Sediment.all
+    @laboratory = Laboratory.find(params[:laboratory_id])
+    @sediments = @laboratory.sediments
     @collect = SedimentsCollect.new(
-      sediments: Sediment.where(sediments_collect_id: nil)
+      sediments: @sediments.where(sediments_collect_id: nil)
     )
     unless current_user.admin?
       @sediments = current_user.sediments

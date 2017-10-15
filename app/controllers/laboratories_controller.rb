@@ -4,7 +4,10 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories
   # GET /laboratories.json
   def index
-    @laboratories = Laboratory.all
+    @laboratories = Laboratory.where(user: current_user)
+    @collect = SedimentsCollect.new(
+      sediments: Sediment.where(sediments_collect_id: nil)
+    )
   end
 
   # GET /laboratories/1

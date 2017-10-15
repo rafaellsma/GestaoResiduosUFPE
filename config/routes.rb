@@ -5,10 +5,6 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-  authenticate :user do
-    resources :sediments
-  end
-
   unauthenticated :user do
     root :to => 'freelancers#index', as: :unauthenticated_root
   end
@@ -18,7 +14,7 @@ Rails.application.routes.draw do
     post 'register_admin', to: 'users#create'
     get 'list', to: 'users#index'
     post 'approve', to: 'users#approve'
-    resources :laboratories
+    resources :sediments, except: [:index]
     resources :departments
     resources :centers
     post 'report', to: 'reports#create'
@@ -27,12 +23,19 @@ Rails.application.routes.draw do
     resource :sediments_collect, only: [:create]
   end
 
+  authenticate :user, lambda { |u| !u.admin? } do
+    resources :sediments, except: [:index]
+  end
+
   devise_scope :user do
     get 'users/update_departments', to: 'users/registrations#update_departments'
     get 'users/update_laboratories', to: 'users/registrations#update_laboratories'
 
     authenticated :user do
-      root :to => 'sediments#index'
+      root :to => 'laboratories#index'
+      resources :laboratories do
+        resources :sediments, only: [:index]
+      end 
     end
   end
 end
