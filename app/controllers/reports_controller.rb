@@ -3,7 +3,6 @@ require "prawn"
 class ReportsController < ApplicationController
 
 	def create_doc
-
 		@sediments_doc = Sediment.where("data_registered >= ? AND data_registered <= ?", params[:initial_date], params[:final_date])
 		Caracal::Document.save '/public/manifesto.docx' do |docx|
 			docx.style do
@@ -12,7 +11,7 @@ class ReportsController < ApplicationController
 				font 'Times New Roman'
 				size 20
 			end
-
+			b = [][]
       docx.h2 'MTR – MANIFESTO PARA TRANSPORTE DE RESÍDUO PERIGOSO N.'
 			docx.h1 ' '
       docx.h3 'Descrição de Resíduos por Laboratório:'

@@ -1,6 +1,7 @@
 class Laboratory < ApplicationRecord
   belongs_to :user, optional: true
   has_many :sediments
+  has_many :sediments_collects
   belongs_to :department
 
   def self.avaiables

@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     post 'report', to: 'reports#create'
     post 'report_doc', to: 'reports#create_doc'
     post 'spreadsheet', to: 'spreadsheets#create'
-    resource :sediments_collect, only: [:create]
+    resources :laboratories do
+      resources :sediments_collects, only: [:create]
+    end 
   end
 
   authenticate :user, lambda { |u| !u.admin? } do
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
 
     authenticated :user do
       root :to => 'laboratories#index'
-      resources :laboratories do
+      resources :laboratories, only: [:index] do
         resources :sediments, only: [:index]
       end 
     end

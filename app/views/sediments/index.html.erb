@@ -31,6 +31,7 @@
             <th><%= t('content.sediments.index.local')%></th>
             <th><%=t('content.laboratories.index.user')%></th>
             <th><%= t('content.sediments.index.date_registered')%></th>
+            <th><%= 'Estado'%></th>
             <th></th>
           </tr>
         </thead>
@@ -46,6 +47,7 @@
               <td> <%=sediment.laboratory.name%> </td>
               <td> <%=sediment.laboratory.user.name%> </td>
               <td> <%=sediment.data_registered.strftime('%d/%m/%Y')%> </td>
+              <td> <%= sediment.sediments_collect.blank? ? 'Não coletado' : 'Coletado'%> </td>
               <td>
                 <%= link_to edit_sediment_path(sediment) do %>
                   <span class="glyphicon glyphicon-pencil"/>
@@ -68,48 +70,10 @@
       <div class="col-md-6">
         <div class="pull-right">
           <% if current_user.admin? %>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-relatorio">
-            Gerar relatório
-          </button>
+          <%= button_to 'Gerar manifesto', laboratory_sediments_collects_path(@laboratory), method: :post, data: { confirm: 'Será gerado um manifesto com todos os residuos que não foram coletados e estes residuos serão coletados. Você tem certeza?' }, class: 'btn btn-default' %>
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Modal relatorio -->
-<div class="modal fade" id="modal-relatorio" tabindex="-1" role="dialog" aria-labelledby="modalRelatorio">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Relatório dos resíduos</h4>
-      </div>
-      <%= form_tag(report_doc_path, class: 'form') do %>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group input-group">
-                <span class="input-group-addon">Inicio</span>
-                <%= date_field_tag :initial_date, Date.today - 10.days, class: 'form-control'%>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group input-group">
-                <span class="input-group-addon">Fim&nbsp;&nbsp;&nbsp;</span>
-                <%= date_field_tag :final_date, Date.today, class: 'form-control'%>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-          <%= button_tag 'Gerar relatório', class: 'btn btn-default' %>
-
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

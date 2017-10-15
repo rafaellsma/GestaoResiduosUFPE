@@ -5,6 +5,7 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories.json
   def index
     @laboratories = Laboratory.where(user: current_user)
+    @laboratories = Laboratory.all if current_user.admin?
     @collect = SedimentsCollect.new(
       sediments: Sediment.where(sediments_collect_id: nil)
     )
