@@ -56,6 +56,10 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (~> 1.1)
       tilt (>= 1.4)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     cliver (0.3.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -247,6 +251,7 @@ DEPENDENCIES
   byebug
   capybara
   caracal
+  chosen-rails
   coffee-rails (~> 4.2)
   cucumber-rails
   database_cleaner
@@ -271,4 +276,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.6
+   1.15.4
