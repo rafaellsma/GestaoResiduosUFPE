@@ -17,6 +17,8 @@
 !/log/.keep
 !/tmp/.keep
 /.idea
+/.idea/*
+/public/manifesto.docx
 
 # Ignore Byebug command history file.
 .byebug_history
