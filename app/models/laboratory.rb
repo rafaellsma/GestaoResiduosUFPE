@@ -23,6 +23,6 @@ class Laboratory < ApplicationRecord
   end
 
   def center_name
-    department.center_name
+    department.center.name
   end
 end
