@@ -1,6 +1,7 @@
 class Laboratory < ApplicationRecord
   belongs_to :user, optional: true
   has_many :sediments
+  has_many :sediments_collects
   belongs_to :department
 
   def self.avaiables
@@ -22,6 +23,10 @@ class Laboratory < ApplicationRecord
   end
 
   def center_name
-    department.center_name
+    department.center.name
+  end
+
+  def total_weight
+    sediments.map{ |a| a.sediments_collect.blank? ? a.weight : 0}.reduce(0,:+)
   end
 end

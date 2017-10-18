@@ -4,9 +4,10 @@ class SedimentsController < ApplicationController
   # GET /sediments
   # GET /sediments.json
   def index
-    @sediments = Sediment.all
+    @laboratory = Laboratory.find(params[:laboratory_id])
+    @sediments = @laboratory.sediments
     @collect = SedimentsCollect.new(
-      sediments: Sediment.where(sediments_collect_id: nil)
+      sediments: @sediments.where(sediments_collect_id: nil)
     )
     unless current_user.admin?
       @sediments = current_user.sediments
@@ -35,7 +36,7 @@ class SedimentsController < ApplicationController
     @sediment.user = current_user
     respond_to do |format|
       if @sediment.save
-        format.html { redirect_to sediments_path, notice: 'Residuo foi criado com sucesso.' }
+        format.html { redirect_to laboratories_path, notice: 'Residuo foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @sediment }
       else
         format.html { render :new }

@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-c = Center.create(name: 'cin')
-d = Department.create(name: 'dep 1', center: c)
-l = Laboratory.create(name: 'lab1', department: d)
+c = Center.create(name: 'Centro de informática')
+d = Department.create(name: 'Departamento de Informação e Sistemas', center: c)
+l = Laboratory.create(name: 'Laboratório de Hardware', department: d)
 
 User.create(name: 'admin', email: "admin@admin.com", password: "admin123", phone_ext: 123, admin: true, approved: true)

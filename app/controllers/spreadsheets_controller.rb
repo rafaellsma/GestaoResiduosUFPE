@@ -24,8 +24,6 @@ class SpreadsheetsController < ApplicationController
         sheet[0,i+1] = 'Departamento'
         sheet[0,i+2] = t("content.sediments.index.#{name}")
         i += 3
-      elsif name == 'sediments_collect_id'
-        next
       else
         sheet[0,i] = t("content.sediments.index.#{name}")
         i += 1
@@ -46,7 +44,7 @@ class SpreadsheetsController < ApplicationController
           user = sediment.user
           sheet[row+1, column] = "Nome: #{user.name} Email: #{user.email} Ramal: #{user.phone_ext}"
         elsif name == 'sediments_collect_id'
-          next
+          sheet[row+1, column] = sediment.sediments_collect.blank? ? 'Não coleta' : 'Coletado'
         else
           sheet[row+1, column] = sediment.send(name)
         end

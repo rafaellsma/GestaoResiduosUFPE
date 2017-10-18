@@ -1,50 +1,121 @@
 
-<h1><%= t('headers.laboratories.index')%></h1>
-
-
-<div class="row">
-  <div class="well">
-    <div class="table-responsive">
-      <table class="table">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th><%= t('content.laboratories.index.name')%></th>
-            <th><%= t('content.laboratories.index.user')%></th>
-            <th><%= t('content.laboratories.index.department')%></th>
-            <th><%= t('content.laboratories.index.center')%></th>
-          </tr>
-          </thead>
-          <% @laboratories.each do |laboratory| %>
-              <tr class>
-                <td><%= laboratory.name %></td>
-                <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
-                  <%end%></td>
-                <td><%= laboratory.department.name %></td>
-                <td><%= laboratory.department.center.name %></td>
-                <td>
-                  <%= link_to edit_laboratory_path(laboratory) do %>
-                      <span class="glyphicon glyphicon-pencil"/>
+<div class="row col-md-12 center-block">
+  <h2><%= t('headers.laboratories.index') %></h2>
+</div>
+<div class="row col-md-12 center-block">
+  <% if current_user.admin? %>
+    <div class="row">
+      <div class="col-md-6 pull-right" style="padding-top: 8px">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+          aria-valuenow="<%= @collect.total_weight_percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @collect.total_weight_percent %>%">
+            <%= @collect.total_weight %> kg/ 7000.0 kg
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row col-md-12 center-block">
+  <div class="row">
+    <div class="well">
+      <div class="table-responsive">
+        <table class="table">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th><%= t('content.laboratories.index.name')%></th>
+              <th><%= t('content.laboratories.index.user')%></th>
+              <th><%= t('content.laboratories.index.department')%></th>
+              <th><%= t('content.laboratories.index.center')%></th>
+              <th><%= "Peso de residuos não coletados"%></th>
+            </tr>
+            </thead>
+            <% @laboratories.each do |laboratory| %>
+                <tr class>
+                  <td><%= laboratory.name %></td>
+                  <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
+                    <%end%></td>
+                  <td><%= laboratory.department.name %></td>
+                  <td><%= laboratory.department.center.name %></td>
+                  <td><%= laboratory.total_weight%></td>
+                  <td>
+                    <%= link_to laboratory_sediments_path(laboratory) do %>
+                        <span class="glyphicon glyphicon-eye-open"/>
+                    <% end %>
+                  </td>
+                  <%if current_user.admin? %>
+                    <td>
+                      <%= link_to edit_laboratory_path(laboratory) do %>
+                          <span class="glyphicon glyphicon-pencil"/>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to laboratory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="glyphicon glyphicon-trash"/>
+                      <% end %>
+                    </td>
                   <% end %>
-                </td>
-                <td>
-                  <%= link_to laboratory, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <span class="glyphicon glyphicon-trash"/>
-                  <% end %>
-                </td>
-              </tr>
-          <% end %>
+                </tr>
+            <% end %>
+          </table>
         </table>
-      </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+      <% unless current_user.admin? %>
+        <%= button_to 'Cadastrar resíduo', new_sediment_path, method: :get, class: 'btn btn-default' %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="pull-right">
+        <% if current_user.admin? %>
+          <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default'%>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-planilha">
+            Gerar planilha
+          </button>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
 
-<div class="row">
-  <div class="row">
-    <div class="col-md-6">
-      <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default btn-lg' %>
+<!-- Modal planilha -->
+<div class="modal fade" id="modal-planilha" tabindex="-1" role="dialog" aria-labelledby="modalPlanilha">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Planilha dos resíduos</h4>
+      </div>
+      <%= form_tag(spreadsheet_path, class: 'form') do %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group input-group">
+                <span class="input-group-addon">Inicio</span>
+                <%= date_field_tag :initial_date, Date.today - 10.days, class: 'form-control'%>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group input-group">
+                <span class="input-group-addon">Fim&nbsp;&nbsp;&nbsp;</span>
+                <%= date_field_tag :final_date, Date.today, class: 'form-control'%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          <%= button_tag 'Gerar planilha', class: 'btn btn-default' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
