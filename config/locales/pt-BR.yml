@@ -10,6 +10,7 @@ pt-BR:
       phone_ext: 'Ramal'
       weight: 'Peso em kg'
       composition: 'Composição'
+      laboratory: 'Laboratório'
       res_type: 'Tipo de Resíduo'
       recipient_type: 'Tipo de Recipiente'
       stock_location: 'Local de estoque do resíduo'
@@ -284,6 +285,7 @@ pt-BR:
         stock_location: "Local do resíduo"
         volume: "Volume (ml)"
         local: "Gerador (Laboratório)"
+        date_registered: "Data de Registro"
         data_registered: "Data de Registro"
         user_id: Facilitador
         laboratory_id: 'Laboratório'
