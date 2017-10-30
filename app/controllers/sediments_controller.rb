@@ -12,6 +12,7 @@ class SedimentsController < ApplicationController
     unless current_user.admin?
       @sediments = current_user.sediments
     end
+    @sediments = Sediment.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /sediments/1

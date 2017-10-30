@@ -19,6 +19,10 @@
 <div class="row col-md-12 center-block">
   <div class="well">
     <div class="table-responsive">
+      <div class="pager">
+        <%= will_paginate @sediments, :previous_label => t("Anterior"), :next_label => t("Próximo") %>
+      </div>
+
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
@@ -60,6 +64,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="pager">
+        <%= will_paginate @sediments, :previous_label => t("Anterior"), :next_label => t("Próximo") %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-6">
@@ -77,4 +84,3 @@
     </div>
   </div>
 </div>
-
