@@ -4709,9 +4709,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #777;
 }
 .pagination {
-  display: inline-block;
+  display: block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 4px;
 }
 .pagination > li {
@@ -4806,7 +4806,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .pager {
   padding-left: 0;
-  margin: 20px 0;
+  margin: 10px 0;
   text-align: center;
   list-style: none;
 }
