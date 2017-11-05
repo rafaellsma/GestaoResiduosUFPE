@@ -18,6 +18,7 @@
 !/tmp/.keep
 /.idea
 /.idea/*
+.DS_store
 /public/manifesto.docx
 
 # Ignore Byebug command history file.
