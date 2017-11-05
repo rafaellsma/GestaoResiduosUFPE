@@ -1,6 +1,6 @@
 class Laboratory < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-  
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :department_id }
   belongs_to :user, optional: true
   has_many :sediments
   has_many :sediments_collects
@@ -21,6 +21,7 @@ class Laboratory < ApplicationRecord
   end
 
   def department_name
+    p Laboratory
     department.name
   end
 
