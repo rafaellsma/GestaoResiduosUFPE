@@ -1,4 +1,5 @@
 class Department < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
   belongs_to :center
   has_many :laboratories
 
