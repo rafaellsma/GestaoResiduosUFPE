@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  has_many :authorizations
+  has_many :authorizations, class_name: 'LaboratoriesUser'
   has_many :laboratories, through: :authorizations
   has_many :sediments
   has_many :notifications
@@ -16,13 +16,15 @@ class User < ApplicationRecord
   validates :laboratories, presence: true, unless: [:admin?]
   validates :enrollment, presence: true, unless: [:admin?]
   validate :already_user_with_laboratory, on: :create
+
   #callbacks
   after_create :send_notification_admin
 
   def already_user_with_laboratory
     laboratory_ids.each do |id|
       begin
-        unless Laboratory.find(id).user.blank?
+        lab = Laboratory.find(id)
+        unless lab.available?
           self.errors.add(:already_user_with_laboratory, 'Já existe outro facilitador com o laboratório')
         end
       rescue
@@ -41,24 +43,30 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && approved?
+    super && !authorizations.where(status: :approved).empty? || admin?
   end
 
   def inactive_message
-    if !approved?
+    if !authorizations.where(status: :approved).empty?
       :not_approved
     else
       super
     end
   end
 
-  def approve!
-    self.approved = true
-    self.save
+  def approve!(lab)
+    authorization = authorizations.where(laboratory: lab).first
+    authorization.status = :approved
+    authorization.save
   end
 
-  def disapprove!
-    self.approved = false
-    self.save
+  def disapprove!(lab)
+    authorization = authorizations.where(laboratory: lab).first
+    authorization.status = :disapproved
+    authorization.save
+  end
+
+  def approved?(lab)
+    !authorizations.where(laboratory: lab, status: :approved).empty?
   end
 end

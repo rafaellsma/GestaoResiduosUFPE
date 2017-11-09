@@ -1,4 +1,4 @@
-User.create(name: 'admin', email: "admin@admin.com", password: "admin123", phone_ext: 123, admin: true, approved: true)
+User.create(name: 'admin', email: "admin@admin.com", password: "admin123", phone_ext: 123, admin: true)
 
 book = Spreadsheet.open(Rails.root.to_s+'/db/labs.xls')
 sheet = book.worksheet(0)
