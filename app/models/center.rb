@@ -1,4 +1,5 @@
 class Center < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
   has_many :departments
 
   def amount_sediments(date_initial, date_final, type)

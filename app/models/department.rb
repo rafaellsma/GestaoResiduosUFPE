@@ -1,4 +1,6 @@
 class Department < ApplicationRecord
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: [:center_id, :chief] }
   belongs_to :center
   has_many :laboratories
 

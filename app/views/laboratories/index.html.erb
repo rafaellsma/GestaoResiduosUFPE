@@ -25,7 +25,6 @@
             <thead>
             <tr>
               <th><%= t('content.laboratories.index.name')%></th>
-              <th><%= t('content.laboratories.index.user')%></th>
               <th><%= t('content.laboratories.index.department')%></th>
               <th><%= t('content.laboratories.index.center')%></th>
               <th><%= "Peso de residuos não coletados"%></th>
@@ -34,8 +33,6 @@
             <% @laboratories.each do |laboratory| %>
                 <tr class>
                   <td><%= laboratory.name %></td>
-                  <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
-                    <%end%></td>
                   <td><%= laboratory.department.name %></td>
                   <td><%= laboratory.department.center.name %></td>
                   <td><%= laboratory.total_weight%></td>

@@ -1,11 +1,19 @@
 class Laboratory < ApplicationRecord
-  belongs_to :user, optional: true
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :department_id }
+
   has_many :sediments
   has_many :sediments_collects
   belongs_to :department
+  has_many :authorizations, class_name: 'LaboratoriesUser'
+  has_many :users, through: :authorizations
 
-  def self.avaiables
-    self.where(user: nil)
+  def self.availables
+    self.joins("LEFT JOIN laboratories_users ON laboratories_users.laboratory_id = laboratories.id AND laboratories_users.status != 1")
+  end
+
+  def available?
+    self.authorizations.where(status: :approved).empty?
   end
 
   def amount_sediments(date_initial, date_final, type)
