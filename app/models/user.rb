@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  has_many :laboratories
+  has_many :authorizations
+  has_many :laboratories, through: :authorizations
   has_many :sediments
   has_many :notifications
 

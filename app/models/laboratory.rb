@@ -1,10 +1,12 @@
 class Laboratory < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :department_id }
-  belongs_to :user, optional: true
+
   has_many :sediments
   has_many :sediments_collects
   belongs_to :department
+  has_many :authorizations
+  has_many :users, through: :authorizations
 
   def self.avaiables
     self.where(user: nil)
@@ -21,7 +23,6 @@ class Laboratory < ApplicationRecord
   end
 
   def department_name
-    p Laboratory
     department.name
   end
 
