@@ -13,11 +13,7 @@ class Laboratory < ApplicationRecord
   end
 
   def available?
-    p 'entrou =============='
-    p self
-    a = self.authorizations.where(status: :approved)
-    p a
-    p a.empty?
+    self.authorizations.where(status: :approved).empty?
   end
 
   def amount_sediments(date_initial, date_final, type)
