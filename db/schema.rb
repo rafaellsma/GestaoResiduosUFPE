@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109133025) do
+ActiveRecord::Schema.define(version: 20171122024110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20171109133025) do
   create_table "sediments_collects", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "laboratory_id"
-    t.index ["laboratory_id"], name: "index_sediments_collects_on_laboratory_id", using: :btree
+    t.integer  "department_id"
+    t.index ["department_id"], name: "index_sediments_collects_on_department_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,5 +115,5 @@ ActiveRecord::Schema.define(version: 20171109133025) do
   add_foreign_key "sediments", "laboratories"
   add_foreign_key "sediments", "sediments_collects"
   add_foreign_key "sediments", "users"
-  add_foreign_key "sediments_collects", "laboratories"
+  add_foreign_key "sediments_collects", "departments"
 end

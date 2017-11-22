@@ -40,6 +40,11 @@
                       <span class="glyphicon glyphicon-trash"/>
                   <% end %>
                 </td>
+                <td>
+                  <%= link_to department_sediments_collects_path(department), method: :post, data: { confirm: 'Será gerado um manifesto com todos os residuos que não foram coletados e estes residuos serão coletados. Você tem certeza?' }, form: {id: 'button-downloadable'} do %>
+                      <span class="glyphicon glyphicon-save-file"/>
+                  <% end %>
+                </td>
               </tr>
           <% end %>
         </table>

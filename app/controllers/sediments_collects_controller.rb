@@ -1,8 +1,9 @@
 class SedimentsCollectsController < ApplicationController
   def create
-  	@laboratory = Laboratory.find(params[:laboratory_id])
-    sediments = Sediment.where(sediments_collect_id: nil, laboratory: @laboratory)
-    sediments_collect = SedimentsCollect.new(sediments: sediments, laboratory: @laboratory)
+  	@department = Department.find(params[:department_id])
+    sediments = @department.sediments_without_collect
+    sediments_collect = SedimentsCollect.new(sediments: sediments, department: @department)
+
     if sediments_collect.save
     	create_doc(sediments_collect)
     else
@@ -13,20 +14,15 @@ class SedimentsCollectsController < ApplicationController
   	def create_doc(sediments_collect)
   		sediments = sediments_collect.sediments
   		docx = Caracal::Document.new('manifesto.docx')
-			table = [
-				sediments.first.attributes.map do |k,v|
-				  if(k != 'user_id' && k!='laboratory_id' && k!='sediments_collect_id' && k != 'id' && k != 'data_registered')
-				  	t("content.sediments.index.#{k}")
-				  end
-				end
-			]
-			sediments.each do |a|
-				table << a.attributes.map do |k,v|
-				 	if k != 'user_id' && k!='laboratory_id' && k!='sediments_collect_id' && k != 'id' && k != 'data_registered'
-						v.to_s
-					end
-				end
-			end
+			table = [['Departamento', 'Tipo do residuo', 'Peso total por tipo de residuo']]
+
+			Sediment::SEDIMENT_TYPES.each do |type|
+        table <<[
+          sediments_collect.department.name,
+          type,
+          sediments.select {|x| x.res_type == type}.map{|x| x.weight}.reduce(0, :+).to_s
+        ]
+      end
 
 			docx.table table.map { |row| row.reject { |cell| cell.blank? }} do
 			  border_color   '666666'   # sets the border color. defaults to 'auto'.

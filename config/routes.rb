@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     resources :departments do
       resources :laboratories, only: [:index]
+      resources :sediments_collects, only: [:create]
     end
 
     resources :centers
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
 
     resources :laboratories, except: [:index] do
       resources :sediments, only: [:index]
-      resources :sediments_collects, only: [:create]
     end
   end
 

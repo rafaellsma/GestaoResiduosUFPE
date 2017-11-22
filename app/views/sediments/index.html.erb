@@ -72,13 +72,6 @@
           <%= button_to 'Cadastrar resíduo', new_sediment_path, method: :get, class: 'btn btn-default' %>
         <% end %>
       </div>
-      <div class="col-md-6">
-        <div class="pull-right">
-          <% if current_user.admin? %>
-          <%= button_to 'Gerar manifesto',laboratory_sediments_collects_path(@laboratory), method: :post, data: { confirm: 'Será gerado um manifesto com todos os residuos que não foram coletados e estes residuos serão coletados. Você tem certeza?' }, class: 'btn btn-default', form: {id: 'button-downloadable'} %>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>

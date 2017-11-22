@@ -25,4 +25,16 @@ class Department < ApplicationRecord
     end
     amount
   end
+
+  def sediments
+    sediments = []
+    laboratories.each do |lab|
+      sediments += lab.sediments
+    end
+    sediments
+  end
+
+  def sediments_without_collect
+    sediments.select {|x| x.sediments_collect.blank? }
+  end
 end
