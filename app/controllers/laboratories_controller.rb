@@ -4,11 +4,9 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories
   # GET /laboratories.json
   def index
-    @laboratories = Laboratory.joins(:authorizations).where(laboratories_users: {user_id: current_user})
-    @laboratories = Laboratory.all if current_user.admin?
-    @collect = SedimentsCollect.new(
-      sediments: Sediment.where(sediments_collect_id: nil)
-    )
+    @department = Department.find(params[:department_id])
+    @laboratories = @department.laboratories.paginate(page: params[:page], per_page: 10)
+    calculate_total_weight
   end
 
   # GET /laboratories/1

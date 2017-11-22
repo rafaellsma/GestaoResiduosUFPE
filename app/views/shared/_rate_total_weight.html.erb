@@ -1,0 +1,14 @@
+<div class="row center-block">
+  <% if current_user.admin? %>
+    <div class="row">
+      <div class="col-md-6 pull-right" style="padding-top: 8px">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+          aria-valuenow="<%= @total_weight_percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @total_weight_percent %>%">
+            <%= @total_weight %> kg/ 7000.0 kg
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

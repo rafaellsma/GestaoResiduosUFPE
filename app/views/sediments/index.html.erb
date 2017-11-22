@@ -1,8 +1,8 @@
 
-<div class="row col-md-12 center-block">
+<div class="row center-block">
   <h2><%= current_user.admin? ? "Residuos do #{@laboratory.name}" : "Residuos" %></h2>
 </div>
-<div class="row col-md-12 center-block">
+<div class="row center-block">
   <% if current_user.admin? %>
     <div class="row">
       <div class="col-md-6 pull-right" style="padding-top: 8px">
@@ -16,11 +16,11 @@
     </div>
   <% end %>
 </div>
-<div class="row col-md-12 center-block">
+<div class="row center-block">
   <div class="well">
     <div class="table-responsive">
-      <div class="pager">
-        <%= will_paginate @sediments, :previous_label => t("Anterior"), :next_label => t("Próximo") %>
+      <div class="flickr_pagination">
+        <%= will_paginate @sediments %>
       </div>
 
       <table class="table table-condensed table-striped">
@@ -80,5 +80,12 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row center-block">
+  <div class="pull-left">
+    <% if current_user.admin? %>
+    <%= button_to 'Voltar',department_laboratories_path(@laboratory.department), method: :get, class: 'btn btn-default' %>
+    <% end %>
   </div>
 </div>

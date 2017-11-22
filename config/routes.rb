@@ -15,11 +15,16 @@ Rails.application.routes.draw do
     post 'register_admin', to: 'users#create'
     get 'list', to: 'users#index'
     post 'approve', to: 'users#approve'
-    resources :sediments, except: [:index]
-    resources :departments
+
+    resources :departments do
+      resources :laboratories, only: [:index]
+    end
+
     resources :centers
     post 'spreadsheet', to: 'spreadsheets#create'
-    resources :laboratories do
+
+    resources :laboratories, except: [:index] do
+      resources :sediments, only: [:index]
       resources :sediments_collects, only: [:create]
     end
   end

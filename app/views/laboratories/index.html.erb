@@ -2,20 +2,7 @@
 <div class="row col-md-12 center-block">
   <h2><%= t('headers.laboratories.index') %></h2>
 </div>
-<div class="row col-md-12 center-block">
-  <% if current_user.admin? %>
-    <div class="row">
-      <div class="col-md-6 pull-right" style="padding-top: 8px">
-        <div class="progress">
-          <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
-          aria-valuenow="<%= @collect.total_weight_percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @collect.total_weight_percent %>%">
-            <%= @collect.total_weight %> kg/ 7000.0 kg
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render 'shared/rate_total_weight' %>
 <div class="row col-md-12 center-block">
   <div class="row">
     <div class="well">
@@ -57,11 +44,19 @@
             <% end %>
           </table>
         </table>
+        <div class="flickr_pagination">
+          <%= will_paginate @laboratories %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row col-md-12 center-block">
+<div class="row center-block">
+  <div class="pull-left">
+    <% if current_user.admin? %>
+      <%= button_to 'Voltar', departments_path, method: :get, class: 'btn btn-default'%>
+    <% end %>
+  </div>
   <div class="pull-right">
     <% if current_user.admin? %>
       <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default'%>
