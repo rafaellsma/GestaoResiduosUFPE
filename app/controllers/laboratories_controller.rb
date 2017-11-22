@@ -4,7 +4,9 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories
   # GET /laboratories.json
   def index
-    @laboratories = Laboratory.all
+    @department = Department.find(params[:department_id])
+    @laboratories = @department.laboratories.paginate(page: params[:page], per_page: 10)
+    calculate_total_weight
   end
 
   # GET /laboratories/1

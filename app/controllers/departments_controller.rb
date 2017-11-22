@@ -1,10 +1,14 @@
+require 'will_paginate/array'
+
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    @departments = Department.all.sort_by(&:total_weight).reverse
+    @departments = @departments.paginate(page: params[:page], per_page: 10)
+    calculate_total_weight
   end
 
   # GET /departments/1

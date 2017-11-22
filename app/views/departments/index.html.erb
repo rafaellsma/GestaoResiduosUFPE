@@ -1,7 +1,8 @@
-<h1><%= t('headers.departments.index') %></h1>
-
-
-<div class="row">
+<div class="row col-md-12 center-block">
+  <h1><%= t('headers.departments.index') %></h1>
+</div>
+<%= render 'shared/rate_total_weight' %>
+<div class="row center-block">
   <div class="well">
     <div class="table-responsive">
       <table class="table">
@@ -13,15 +14,22 @@
             <th><%= t('content.departments.index.chief')%></th>
             <th><%= t('content.departments.index.email')%></th>
             <th><%= t('content.departments.index.phone_ext')%></th>
+            <th><%= "Peso de residuos não coletados"%></th>
           </tr>
           </thead>
           <% @departments.each do |department| %>
-              <tr class>
+              <tr>
                 <td> <%=department.name%> </td>
                 <td> <%=department.center.name%> </td>
                 <td> <%=department.chief%> </td>
                 <td> <%=department.email%> </td>
                 <td> <%=department.phone_ext%> </td>
+                <td><%= department.total_weight%></td>
+                <td>
+                  <%= link_to department_laboratories_path(department) do %>
+                      <span class="glyphicon glyphicon-eye-open"/>
+                  <% end %>
+                </td>
                 <td>
                   <%= link_to edit_department_path(department) do %>
                       <span class="glyphicon glyphicon-pencil"/>
@@ -32,18 +40,64 @@
                       <span class="glyphicon glyphicon-trash"/>
                   <% end %>
                 </td>
+                <td>
+                  <%= link_to department_sediments_collects_path(department), method: :post, data: { confirm: 'Será gerado um manifesto com todos os residuos que não foram coletados e estes residuos serão coletados. Você tem certeza?' }, form: {id: 'button-downloadable'} do %>
+                      <span class="glyphicon glyphicon-save-file"/>
+                  <% end %>
+                </td>
               </tr>
           <% end %>
         </table>
       </table>
+      <div class="flickr_pagination">
+        <%= will_paginate @departments %>
+      </div>
     </div>
   </div>
 </div>
+<div class="row center-block">
+  <div class="pull-right">
+    <% if current_user.admin? %>
+      <%= button_to 'Cadastrar Departamento', new_department_path, method: :get, class: 'btn btn-default' %>
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-planilha">
+        Gerar planilha
+      </button>
+    <% end %>
+  </div>
+</div>
 
-<div class="row">
-  <div class="row">
-    <div class="col-md-6">
-      <%= button_to 'Cadastrar Departamento', new_department_path, method: :get, class: 'btn btn-default btn-lg' %>
+<!-- Modal planilha -->
+<div class="modal fade" id="modal-planilha" tabindex="-1" role="dialog" aria-labelledby="modalPlanilha">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Planilha dos resíduos</h4>
+      </div>
+      <%= form_tag(spreadsheet_path, class: 'form') do %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group input-group">
+                <span class="input-group-addon">Inicio</span>
+                <%= date_field_tag :initial_date, Date.today - 10.days, class: 'form-control'%>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group input-group">
+                <span class="input-group-addon">Fim&nbsp;&nbsp;&nbsp;</span>
+                <%= date_field_tag :final_date, Date.today, class: 'form-control'%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          <%= button_tag 'Gerar planilha', class: 'btn btn-default' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

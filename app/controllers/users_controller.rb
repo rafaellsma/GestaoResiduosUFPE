@@ -15,32 +15,27 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = []
-    if params[:type] == '1'
-      @users = User.where(approved: true, admin: false)
-    else
-      @users = User.where(approved: false, admin: false)
-    end
-    flash[:notice] = ''
-    if !params[:type].blank? && @users.empty?
+    @users = User.where(admin: false)
+    if @users.empty?
       flash[:notice] = "Não existe nenhum usuário"
     end
   end
 
   def approve
     user = User.find(params[:user_id])
+    lab = Laboratory.find(params[:laboratory_id])
     @users = User.where(approved: false, admin: false)
     if params[:commit] == 'desaprove!'
-      user.disapprove!
-      redirect_to controller: 'users', action: 'index', type: 1
+      user.disapprove!(lab)
+      redirect_to controller: 'users', action: 'index'
     else
-      user.approve!
-      redirect_to controller: 'users', action: 'index', type: 0
+      user.approve!(lab)
+      redirect_to controller: 'users', action: 'index'
     end
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :phone_ext)
   end

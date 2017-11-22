@@ -1,0 +1,43 @@
+<div class="modal fade" id="modal-laboratorios-<%=user.id%>" tabindex="-1" role="dialog" aria-labelledby="modalLaboratorios<%=user.id%>">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Laboratórios de <%= user.name %></h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped custab">
+          <thead>
+              <tr>
+                  <th>Centro</th>
+                  <th>Departamento</th>
+                  <th>Laboratório</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <% user.laboratories.each do |lab| %>
+            <tr>
+              <td> <%=lab.center_name%> </td>
+              <td> <%=lab.department_name%> </td>
+              <td> <%=lab.name%></td>
+              <td>
+                <%= form_tag('/approve') do %>
+                  <%= hidden_field_tag 'user_id', user.id %>
+                  <%= hidden_field_tag 'laboratory_id', lab.id %>
+                  <% if user.approved?(lab) %>
+                    <%= submit_tag 'desaprove!', class: 'btn btn-xs btn-desapprove' %>
+                  <% else %>
+                    <%= submit_tag 'aprove!', class: 'btn btn-xs btn-approve ' %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

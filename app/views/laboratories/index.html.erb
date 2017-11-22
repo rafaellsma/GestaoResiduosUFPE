@@ -1,50 +1,65 @@
 
-<h1><%= t('headers.laboratories.index')%></h1>
-
-
-<div class="row">
-  <div class="well">
-    <div class="table-responsive">
-      <table class="table">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th><%= t('content.laboratories.index.name')%></th>
-            <th><%= t('content.laboratories.index.user')%></th>
-            <th><%= t('content.laboratories.index.department')%></th>
-            <th><%= t('content.laboratories.index.center')%></th>
-          </tr>
-          </thead>
-          <% @laboratories.each do |laboratory| %>
-              <tr class>
-                <td><%= laboratory.name %></td>
-                <td><% if !laboratory.user.nil? %><%= laboratory.user.name %>
-                  <%end%></td>
-                <td><%= laboratory.department.name %></td>
-                <td><%= laboratory.department.center.name %></td>
-                <td>
-                  <%= link_to edit_laboratory_path(laboratory) do %>
-                      <span class="glyphicon glyphicon-pencil"/>
+<div class="row col-md-12 center-block">
+  <h2><%= t('headers.laboratories.index') %></h2>
+</div>
+<%= render 'shared/rate_total_weight' %>
+<div class="row col-md-12 center-block">
+  <div class="row">
+    <div class="well">
+      <div class="table-responsive">
+        <table class="table">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th><%= t('content.laboratories.index.name')%></th>
+              <th><%= t('content.laboratories.index.department')%></th>
+              <th><%= t('content.laboratories.index.center')%></th>
+              <th><%= "Peso de residuos não coletados"%></th>
+            </tr>
+            </thead>
+            <% @laboratories.each do |laboratory| %>
+                <tr>
+                  <td><%= laboratory.name %></td>
+                  <td><%= laboratory.department.name %></td>
+                  <td><%= laboratory.department.center.name %></td>
+                  <td><%= laboratory.total_weight%></td>
+                  <td>
+                    <%= link_to laboratory_sediments_path(laboratory) do %>
+                        <span class="glyphicon glyphicon-eye-open"/>
+                    <% end %>
+                  </td>
+                  <%if current_user.admin? %>
+                    <td>
+                      <%= link_to edit_laboratory_path(laboratory) do %>
+                          <span class="glyphicon glyphicon-pencil"/>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to laboratory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="glyphicon glyphicon-trash"/>
+                      <% end %>
+                    </td>
                   <% end %>
-                </td>
-                <td>
-                  <%= link_to laboratory, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <span class="glyphicon glyphicon-trash"/>
-                  <% end %>
-                </td>
-              </tr>
-          <% end %>
+                </tr>
+            <% end %>
+          </table>
         </table>
-      </table>
+        <div class="flickr_pagination">
+          <%= will_paginate @laboratories %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-<div class="row">
-  <div class="row">
-    <div class="col-md-6">
-      <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default btn-lg' %>
-    </div>
+<div class="row center-block">
+  <div class="pull-left">
+    <% if current_user.admin? %>
+      <%= button_to 'Voltar', departments_path, method: :get, class: 'btn btn-default'%>
+    <% end %>
+  </div>
+  <div class="pull-right">
+    <% if current_user.admin? %>
+      <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default'%>
+    <% end %>
   </div>
 </div>

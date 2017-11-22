@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #Use for generating pdf
 gem 'prawn', '~> 2.2.2'
+#Use for generating doc
+gem 'caracal'
 #Use to generating xls
 gem 'spreadsheet'
 # Use Capistrano for deployment
@@ -61,3 +63,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+# pagination for Tables
+gem 'will_paginate'

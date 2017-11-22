@@ -12,3 +12,9 @@ $(document).on('turbolinks:load', function() {
     $("#stock_location_input").val(text);
   });
 });
+
+$(function() {
+  return $("#button-downloadable").on("ajax:success", function(e, data, status, xhr) {
+    console.log(data);
+  });
+});

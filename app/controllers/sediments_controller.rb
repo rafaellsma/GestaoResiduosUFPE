@@ -4,13 +4,16 @@ class SedimentsController < ApplicationController
   # GET /sediments
   # GET /sediments.json
   def index
-    @sediments = Sediment.all
-    @collect = SedimentsCollect.new(
-      sediments: Sediment.where(sediments_collect_id: nil)
-    )
-    unless current_user.admin?
+    if current_user.admin?
+      @laboratory = Laboratory.find(params[:laboratory_id])
+      @sediments = @laboratory.sediments
+      @collect = SedimentsCollect.new(
+        sediments: @sediments.where(sediments_collect_id: nil)
+      )
+    else
       @sediments = current_user.sediments
     end
+    @sediments = Sediment.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /sediments/1
@@ -32,7 +35,6 @@ class SedimentsController < ApplicationController
   def create
     @sediment = Sediment.new(sediment_params)
     @sediment.data_registered = Time.now
-    @sediment.laboratory = current_user.laboratory
     @sediment.user = current_user
     respond_to do |format|
       if @sediment.save
@@ -78,6 +80,6 @@ class SedimentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sediment_params
       params.require(:sediment).permit(:composition, :weight, :recipient_type,
-      :local, :res_type, :volume,:data_registered, :stock_location)
+      :local, :res_type, :volume,:data_registered, :stock_location, :laboratory_id)
     end
 end

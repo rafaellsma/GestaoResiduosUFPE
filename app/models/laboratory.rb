@@ -1,10 +1,19 @@
 class Laboratory < ApplicationRecord
-  belongs_to :user, optional: true
-  has_many :sediments
-  belongs_to :department
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :department_id }
 
-  def self.avaiables
-    self.where(user: nil)
+  has_many :sediments
+  has_many :sediments_collects
+  belongs_to :department
+  has_many :authorizations, class_name: 'LaboratoriesUser'
+  has_many :users, through: :authorizations
+
+  def self.availables
+    self.joins("LEFT JOIN laboratories_users ON laboratories_users.laboratory_id = laboratories.id AND laboratories_users.status != 1")
+  end
+
+  def available?
+    self.authorizations.where(status: :approved).empty?
   end
 
   def amount_sediments(date_initial, date_final, type)
@@ -22,6 +31,10 @@ class Laboratory < ApplicationRecord
   end
 
   def center_name
-    department.center_name
+    department.center.name
+  end
+
+  def total_weight
+    sediments.map{ |a| a.sediments_collect.blank? ? a.weight : 0}.reduce(0,:+)
   end
 end

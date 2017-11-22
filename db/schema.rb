@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802145009) do
+ActiveRecord::Schema.define(version: 20171122024110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,17 @@ ActiveRecord::Schema.define(version: 20170802145009) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "department_id"
-    t.integer  "user_id"
     t.index ["department_id"], name: "index_laboratories_on_department_id", using: :btree
-    t.index ["user_id"], name: "index_laboratories_on_user_id", using: :btree
+  end
+
+  create_table "laboratories_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "laboratory_id"
+    t.integer  "status",        default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["laboratory_id"], name: "index_laboratories_users_on_laboratory_id", using: :btree
+    t.index ["user_id"], name: "index_laboratories_users_on_user_id", using: :btree
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -72,8 +80,10 @@ ActiveRecord::Schema.define(version: 20170802145009) do
   end
 
   create_table "sediments_collects", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "department_id"
+    t.index ["department_id"], name: "index_sediments_collects_on_department_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,20 +102,18 @@ ActiveRecord::Schema.define(version: 20170802145009) do
     t.string   "name"
     t.integer  "phone_ext"
     t.boolean  "admin",                  default: false
-    t.integer  "laboratory_id"
-    t.boolean  "approved",               default: false
     t.string   "enrollment"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["laboratory_id"], name: "index_users_on_laboratory_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "departments", "centers"
   add_foreign_key "laboratories", "departments"
-  add_foreign_key "laboratories", "users"
+  add_foreign_key "laboratories_users", "laboratories"
+  add_foreign_key "laboratories_users", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "sediments", "laboratories"
   add_foreign_key "sediments", "sediments_collects"
   add_foreign_key "sediments", "users"
-  add_foreign_key "users", "laboratories"
+  add_foreign_key "sediments_collects", "departments"
 end

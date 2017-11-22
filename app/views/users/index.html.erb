@@ -1,8 +1,6 @@
+<h1>Lista de usuários</h1>
+
 <div class="well">
-  <div class="pull-right">
-    <a class="btn" href="/list?type=0">Usuarios não aprovados</a>
-    <a class="btn" href="/list?type=1">Usuarios aprovados</a>
-  </div>
   <div class="tab-content">
     <div class="tab-pane active in" id="home">
       <div class="row">
@@ -11,9 +9,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Centro</th>
-                <th>Departamento</th>
-                <th>Laboratório</th>
+                <th>Laboratórios</th>
                 <th>Ramal</th>
             </tr>
         </thead>
@@ -23,3 +19,6 @@
     </div>
     </div>
 </div>
+<% @users.each do |user| %>
+  <%= render partial: 'modal_user', locals: {user: user} %>
+<% end %>
