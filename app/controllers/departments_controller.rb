@@ -5,6 +5,7 @@ class DepartmentsController < ApplicationController
   # GET /departments.json
   def index
     @departments = Department.all
+    @departments = @departments.sort_by { |x| -x.total_weight}
     @collect = SedimentsCollect.new(
       sediments: Sediment.where(sediments_collect_id: nil)
     )

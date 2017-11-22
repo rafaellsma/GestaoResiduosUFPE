@@ -25,19 +25,7 @@ Rails.application.routes.draw do
   end
 
   authenticate :user, lambda { |u| !u.admin? } do
-    resources :sediments, except: [:index]
+    resources :sediments
     root :to => 'sediments#index'
-  end
-
-  devise_scope :user do
-    get 'users/update_departments', to: 'users/registrations#update_departments'
-    get 'users/update_laboratories', to: 'users/registrations#update_laboratories'
-
-    authenticated :user do
-
-      resources :laboratories, only: [:index] do
-        resources :sediments, only: [:index]
-      end
-    end
   end
 end
