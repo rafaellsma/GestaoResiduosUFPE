@@ -33,7 +33,6 @@
             <th><%= t('content.sediments.index.stock_location')%></th>
             <th><%= t('content.sediments.index.volume')%></th>
             <th><%= t('content.sediments.index.local')%></th>
-            <th><%=t('content.laboratories.index.user')%></th>
             <th><%= t('content.sediments.index.date_registered')%></th>
             <th><%= 'Estado'%></th>
             <th></th>
@@ -49,7 +48,6 @@
               <td> <%=sediment.stock_location%> </td>
               <td> <%=sediment.volume%> </td>
               <td> <%=sediment.laboratory.name%> </td>
-              <td> <%=sediment.laboratory.user.name%> </td>
               <td> <%=sediment.data_registered.strftime('%d/%m/%Y')%> </td>
               <td> <%= sediment.sediments_collect.blank? ? 'Não coletado' : 'Coletado'%> </td>
               <td>

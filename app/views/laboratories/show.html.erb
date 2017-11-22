@@ -4,12 +4,12 @@
   <strong><%= t('content.laboratories.index.name')%>:</strong>
   <%= @laboratory.name %>
 </p>
-
-<p>
-  <strong><%= t('content.laboratories.index.user')%>:</strong>
-  <% if !@laboratory.user.nil? %> <%= @laboratory.user.name %>
-      <%end%>
-</p>
+<p><strong><%= t('content.laboratories.index.user')%>:</strong></p>
+<ul>
+  <% @laboratory.users.each do |user| %>
+    <li><%= user.name %></li>
+  <%end%>
+</ul>
 
 <%= link_to 'Edit', edit_laboratory_path(@laboratory) %> |
 <%= link_to 'Back', laboratories_path %>
