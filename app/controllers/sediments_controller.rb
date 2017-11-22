@@ -4,12 +4,13 @@ class SedimentsController < ApplicationController
   # GET /sediments
   # GET /sediments.json
   def index
-    @laboratory = Laboratory.find(params[:laboratory_id])
-    @sediments = @laboratory.sediments
-    @collect = SedimentsCollect.new(
-      sediments: @sediments.where(sediments_collect_id: nil)
-    )
-    unless current_user.admin?
+    if current_user.admin?
+      @laboratory = Laboratory.find(params[:laboratory_id])
+      @sediments = @laboratory.sediments
+      @collect = SedimentsCollect.new(
+        sediments: @sediments.where(sediments_collect_id: nil)
+      )
+    else
       @sediments = current_user.sediments
     end
     @sediments = Sediment.paginate(:page => params[:page], :per_page => 10)

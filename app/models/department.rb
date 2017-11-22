@@ -14,8 +14,8 @@ class Department < ApplicationRecord
     self.includes(:laboratories)
   end
 
-  def get_laboratories
-    laboratories
+  def total_weight
+    laboratories.map{|x| x.total_weight}.reduce(0, :+)
   end
 
   def amount_sediments(date_initial, date_final, type)

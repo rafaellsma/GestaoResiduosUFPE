@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   authenticate :user, lambda { |u| u.admin? } do
+    root :to => 'departments#index'
     get 'register_admin', to: 'users#new_admin'
     post 'register_admin', to: 'users#create'
     get 'list', to: 'users#index'
@@ -20,11 +21,12 @@ Rails.application.routes.draw do
     post 'spreadsheet', to: 'spreadsheets#create'
     resources :laboratories do
       resources :sediments_collects, only: [:create]
-    end 
+    end
   end
 
   authenticate :user, lambda { |u| !u.admin? } do
     resources :sediments, except: [:index]
+    root :to => 'sediments#index'
   end
 
   devise_scope :user do
@@ -32,10 +34,10 @@ Rails.application.routes.draw do
     get 'users/update_laboratories', to: 'users/registrations#update_laboratories'
 
     authenticated :user do
-      root :to => 'laboratories#index'
+
       resources :laboratories, only: [:index] do
         resources :sediments, only: [:index]
-      end 
+      end
     end
   end
 end

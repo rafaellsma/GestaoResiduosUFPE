@@ -61,58 +61,10 @@
     </div>
   </div>
 </div>
-<div class="row">
-    <div class="col-md-6">
-      <% unless current_user.admin? %>
-        <%= button_to 'Cadastrar resíduo', new_sediment_path, method: :get, class: 'btn btn-default' %>
-      <% end %>
-    </div>
-    <div class="col-md-6">
-      <div class="pull-right">
-        <% if current_user.admin? %>
-          <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default'%>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-planilha">
-            Gerar planilha
-          </button>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal planilha -->
-<div class="modal fade" id="modal-planilha" tabindex="-1" role="dialog" aria-labelledby="modalPlanilha">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Planilha dos resíduos</h4>
-      </div>
-      <%= form_tag(spreadsheet_path, class: 'form') do %>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group input-group">
-                <span class="input-group-addon">Inicio</span>
-                <%= date_field_tag :initial_date, Date.today - 10.days, class: 'form-control'%>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group input-group">
-                <span class="input-group-addon">Fim&nbsp;&nbsp;&nbsp;</span>
-                <%= date_field_tag :final_date, Date.today, class: 'form-control'%>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-          <%= button_tag 'Gerar planilha', class: 'btn btn-default' %>
-        </div>
-      <% end %>
-    </div>
+<div class="row col-md-12 center-block">
+  <div class="pull-right">
+    <% if current_user.admin? %>
+      <%= button_to 'Cadastrar Laboratório', new_laboratory_path, method: :get, class: 'btn btn-default'%>
+    <% end %>
   </div>
 </div>

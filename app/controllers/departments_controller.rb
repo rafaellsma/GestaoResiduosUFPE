@@ -5,6 +5,9 @@ class DepartmentsController < ApplicationController
   # GET /departments.json
   def index
     @departments = Department.all
+    @collect = SedimentsCollect.new(
+      sediments: Sediment.where(sediments_collect_id: nil)
+    )
   end
 
   # GET /departments/1

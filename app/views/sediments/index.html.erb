@@ -1,6 +1,6 @@
 
 <div class="row col-md-12 center-block">
-  <h2>Residuos do <%=@laboratory.name%></h2>
+  <h2><%= current_user.admin? ? "Residuos do #{@laboratory.name}" : "Residuos" %></h2>
 </div>
 <div class="row col-md-12 center-block">
   <% if current_user.admin? %>
