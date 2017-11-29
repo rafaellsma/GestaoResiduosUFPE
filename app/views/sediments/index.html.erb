@@ -40,27 +40,29 @@
         </thead>
         <tbody>
           <% @sediments.each do |sediment| %>
-            <tr>
-              <td> <%=sediment.composition%> </td>
-              <td> <%=sediment.weight%> </td>
-              <td> <%=sediment.res_type%> </td>
-              <td> <%=sediment.recipient_type%> </td>
-              <td> <%=sediment.stock_location%> </td>
-              <td> <%=sediment.volume%> </td>
-              <td> <%=sediment.laboratory.name%> </td>
-              <td> <%=sediment.data_registered.strftime('%d/%m/%Y')%> </td>
-              <td> <%= sediment.sediments_collect.blank? ? 'Não coletado' : 'Coletado'%> </td>
-              <td>
-                <%= link_to edit_sediment_path(sediment) do %>
-                  <span class="glyphicon glyphicon-pencil"/>
-                <% end %>
-                <%= link_to sediment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <span class="glyphicon glyphicon-trash"/>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
+            <% if sediment.user == current_user || current_user.admin? %>
+              <tr>
+                <td> <%=sediment.composition%> </td>
+                <td> <%=sediment.weight%> </td>
+                <td> <%=sediment.res_type%> </td>
+                <td> <%=sediment.recipient_type%> </td>
+                <td> <%=sediment.stock_location%> </td>
+                <td> <%=sediment.volume%> </td>
+                <td> <%=sediment.laboratory.name%> </td>
+                <td> <%=sediment.data_registered.strftime('%d/%m/%Y')%> </td>
+                <td> <%= sediment.sediments_collect.blank? ? 'Não coletado' : 'Coletado'%> </td>
+                <td>
+                  <%= link_to edit_sediment_path(sediment) do %>
+                    <span class="glyphicon glyphicon-pencil"/>
+                  <% end %>
+                  <%= link_to sediment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span class="glyphicon glyphicon-trash"/>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+         <% end %>
       </table>
       <div class="pager">
         <%= will_paginate @sediments, :previous_label => t("Anterior"), :next_label => t("Próximo") %>
